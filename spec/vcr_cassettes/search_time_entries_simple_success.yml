@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.track.toggl.com/reports/api/v3/workspace/<TOGGL_WORKSPACE_ID>/search/time_entries
+    body:
+      encoding: UTF-8
+      string: '{"start_date":"2024-04-07"}'
+    headers:
+      User-Agent:
+      - Faraday v2.9.0
+      Authorization:
+      - Basic <TOGGL_BASIC_AUTH>
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Tue, 09 Apr 2024 05:10:05 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '809'
+      x-page-size:
+      - '50'
+      x-range-end:
+      - '2024-04-13'
+      x-range-start:
+      - '2024-04-07'
+      x-service-level:
+      - GREEN
+      instance:
+      - track-public-api-proxy-6bc44dc6d5-7wdt5
+      strict-transport-security:
+      - max-age=15552000; includeSubDomains
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-we-are-hiring:
+      - https://toggl.com/jobs/
+      x-request-id:
+      - 568c6e206eefb8975ff8ae0a8e25f47f
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      via:
+      - 1.1 google
+      alt-svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: '[{"user_id":10658406,"username":"Michael C","project_id":201876878,"task_id":null,"billable":false,"description":"The
+        First task","tag_ids":[15986619,15986620],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3398443148,"seconds":196,"start":"2024-04-08T21:19:52-07:00","stop":"2024-04-08T21:23:08-07:00","at":"2024-04-09T04:27:13+00:00"}],"row_number":1},{"user_id":10658406,"username":"Michael
+        C","project_id":201876878,"task_id":null,"billable":false,"description":"The
+        First task","tag_ids":[15986619,15986620],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3398445220,"seconds":6,"start":"2024-04-08T21:26:32-07:00","stop":"2024-04-08T21:26:38-07:00","at":"2024-04-09T04:27:13+00:00"}],"row_number":2}]'
+  recorded_at: Tue, 09 Apr 2024 05:10:05 GMT
+recorded_with: VCR 6.2.0
