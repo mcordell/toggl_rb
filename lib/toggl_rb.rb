@@ -6,7 +6,6 @@ require_relative "toggl_rb/version"
 
 module TogglRb
   class Error < StandardError; end
-  # Your code goes here...
 
   def self.debug_logging?
     config.debug_logging?
@@ -14,6 +13,10 @@ module TogglRb
 
   def self.config
     @config ||= Config.new
+  end
+
+  def self.client
+    @client ||= Client.new
   end
 end
 
