@@ -2,6 +2,7 @@
 
 require_relative "toggl_rb/client"
 require_relative "toggl_rb/config"
+require_relative "toggl_rb/reports"
 require_relative "toggl_rb/version"
 
 module TogglRb
@@ -19,4 +20,3 @@ module TogglRb
     @client ||= Client.new
   end
 end
-
