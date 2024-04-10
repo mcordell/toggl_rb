@@ -12,3 +12,8 @@ gem "rspec", "~> 3.0"
 gem "rubocop", "~> 1.21"
 
 gem "solargraph"
+
+gem "vcr", ">= 6.2"
+
+gem "simplecov", require: false
+gem "simplecov-lcov", "~> 0.7.0", require: false
