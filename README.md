@@ -1,6 +1,7 @@
 # TogglRb
 
 [![Ruby](https://github.com/mcordell/toggl_rb/actions/workflows/ruby.yml/badge.svg)](https://github.com/mcordell/toggl_rb/actions/workflows/ruby.yml)
+[![Coverage Status](https://coveralls.io/repos/github/mcordell/toggl_rb/badge.svg)](https://coveralls.io/github/mcordell/toggl_rb)
 
 TODO: Delete this and the text below, and describe your gem
 
