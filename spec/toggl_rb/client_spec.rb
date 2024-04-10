@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "base64"
+
 module TogglRb
   RSpec.describe Client do
     let(:username) { nil }
@@ -12,7 +14,7 @@ module TogglRb
                       password: password,
                       api_token: api_token,
                       basic_auth?: basic_auth,
-                      api_token?: !!api_token)
+                      api_token?: !api_token.nil?)
     end
 
     before do
@@ -20,14 +22,16 @@ module TogglRb
     end
 
     describe "initialization" do
-      context "when no authentication is not configured" do
-        it "initializes base_connection and reports_connection without authentication" do
+      context "when authentication is not configured" do
+        it "initializes core_connection and reports_connection without authentication" do
           client = Client.new
 
-          expect(client.base_connection.headers).not_to include("Authorization")
+          expect(client.core_connection.headers).not_to include("Authorization")
+          expect(client.core_connection.headers).to include("Content-Type" => "application/json",
+                                                            "Accept" => "application/json")
+          expect(client.reports_connection.headers).not_to include("Authorization")
           expect(client.reports_connection.headers).to include("Content-Type" => "application/json",
                                                                "Accept" => "application/json")
-          expect(client.reports_connection.headers).not_to include("Authorization")
         end
       end
 
@@ -36,26 +40,24 @@ module TogglRb
         let(:username) { "user" }
         let(:password) { "pass" }
 
-        it "initializes reports_connection with basic auth" do
+        it "initializes core_connection and reports_connection with basic auth" do
           client = Client.new
 
-          expect(client.reports_connection.headers).to include("Content-Type" => "application/json",
-                                                               "Accept" => "application/json",
-                                                               "Authorization" => "Basic " +
-            Base64.encode64("#{username}:#{password}").chomp)
+          basic_auth_header = "Basic #{Base64.encode64("#{username}:#{password}").chomp}"
+          expect(client.core_connection.headers).to include("Authorization" => basic_auth_header)
+          expect(client.reports_connection.headers).to include("Authorization" => basic_auth_header)
         end
       end
 
       context "when using an API token" do
         let(:api_token) { "RANDOM_STRING" }
 
-        it "initializes reports_connection with API token as basic auth" do
+        it "initializes core_connection and reports_connection with API token as basic auth" do
           client = Client.new
 
-          expect(client.reports_connection.headers).to include("Content-Type" => "application/json",
-                                                               "Accept" => "application/json",
-                                                               "Authorization" => "Basic " +
-            Base64.encode64("#{api_token}:api_token").chomp)
+          api_token_auth_header = "Basic #{Base64.encode64("#{api_token}:api_token").chomp}"
+          expect(client.core_connection.headers).to include("Authorization" => api_token_auth_header)
+          expect(client.reports_connection.headers).to include("Authorization" => api_token_auth_header)
         end
       end
     end
