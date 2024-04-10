@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.track.toggl.com/api/v9/me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.9.0
+      Authorization:
+      - Basic <TOGGL_BASIC_AUTH>
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Wed, 10 Apr 2024 04:21:12 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '653'
+      cache-control:
+      - no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0
+      x-toggl-request-id:
+      - 756ed8a0-9902-4ac7-b761-90b78ac8025a
+      x-service-level:
+      - GREEN
+      instance:
+      - track-public-api-proxy-6bc44dc6d5-mrzsv
+      strict-transport-security:
+      - max-age=15552000; includeSubDomains
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-we-are-hiring:
+      - https://toggl.com/jobs/
+      x-request-id:
+      - 3ea82d01f4ad50198a5fda6527a6a107
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      via:
+      - 1.1 google
+      alt-svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: '{"id":10658406,"api_token":"<TOGGL_API_TOKEN>","email":"<TOGGL_USER_EMAIL>","fullname":"Michael
+        C","timezone":"America/Los_Angeles","toggl_accounts_id":"AXnZJWgbGgyrdT6a9tcR6X","default_workspace_id":<TOGGL_WORKSPACE_ID>,"beginning_of_week":1,"image_url":"https://assets.track.toggl.com/images/profile.png","created_at":"2024-04-09T03:12:46.676852Z","updated_at":"2024-04-09T20:22:21.519922Z","openid_email":null,"openid_enabled":false,"country_id":null,"has_password":true,"at":"2024-04-10T04:21:12.272198Z","intercom_hash":"f57a6e453be5ea03dfeb604497de4fc1d216224908a302710c71401c399a6283","authorization_updated_at":"2024-04-09T19:05:32.790318Z"}'
+  recorded_at: Wed, 10 Apr 2024 04:21:12 GMT
+recorded_with: VCR 6.2.0

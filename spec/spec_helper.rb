@@ -12,6 +12,7 @@ VCR.configure do |config|
   config.filter_sensitive_data("<TOGGL_API_TOKEN>") { ENV.fetch("TOGGL_API_TOKEN", nil) }
   config.filter_sensitive_data("<TOGGL_WORKSPACE_ID>") { ENV.fetch("TOGGL_WORKSPACE_ID", nil) }
   config.filter_sensitive_data("<TOGGL_BASIC_AUTH>") { ENV.fetch("TOGGL_BASIC_AUTH", nil) }
+  config.filter_sensitive_data("<TOGGL_USER_EMAIL>") { ENV.fetch("TOGGL_EMAIL", nil) }
 end
 
 RSpec.configure do |config|

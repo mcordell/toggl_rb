@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.track.toggl.com/api/v9/me?with_related_data=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.9.0
+      Authorization:
+      - Basic <TOGGL_BASIC_AUTH>
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Wed, 10 Apr 2024 04:20:44 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '3939'
+      cache-control:
+      - no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0
+      x-toggl-request-id:
+      - a3d049de-ecfc-43f4-bad3-95e57a3f7e27
+      x-service-level:
+      - GREEN
+      instance:
+      - track-public-api-proxy-6bc44dc6d5-7wdt5
+      strict-transport-security:
+      - max-age=15552000; includeSubDomains
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-we-are-hiring:
+      - https://toggl.com/jobs/
+      x-request-id:
+      - d09a92a94af5e337f82973e0311170bb
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      via:
+      - 1.1 google
+      alt-svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: '{"id":10658406,"api_token":"<TOGGL_API_TOKEN>","email":"<TOGGL_USER_EMAIL>","fullname":"Michael
+        C","timezone":"America/Los_Angeles","toggl_accounts_id":"AXnZJWgbGgyrdT6a9tcR6X","default_workspace_id":<TOGGL_WORKSPACE_ID>,"beginning_of_week":1,"image_url":"https://assets.track.toggl.com/images/profile.png","created_at":"2024-04-09T03:12:46.676852Z","updated_at":"2024-04-09T20:22:21.519922Z","openid_email":null,"openid_enabled":false,"country_id":null,"has_password":true,"at":"2024-04-10T04:20:44.729812Z","intercom_hash":"f57a6e453be5ea03dfeb604497de4fc1d216224908a302710c71401c399a6283","tags":[{"id":15986619,"workspace_id":<TOGGL_WORKSPACE_ID>,"name":"tag_1","at":"2024-04-09T04:27:13.158982Z","creator_id":10658406,"permissions":null},{"id":15986620,"workspace_id":<TOGGL_WORKSPACE_ID>,"name":"tag_3","at":"2024-04-09T04:27:13.168866Z","creator_id":10658406,"permissions":null}],"time_entries":[{"id":3398445220,"workspace_id":<TOGGL_WORKSPACE_ID>,"project_id":201899518,"task_id":null,"billable":false,"start":"2024-04-09T04:26:32+00:00","stop":"2024-04-09T04:26:38+00:00","duration":6,"description":"The
+        First task","tags":["tag_1","tag_3"],"tag_ids":[15986619,15986620],"duronly":true,"at":"2024-04-09T19:22:46+00:00","server_deleted_at":null,"user_id":10658406,"uid":10658406,"wid":<TOGGL_WORKSPACE_ID>,"pid":201899518,"permissions":null},{"id":3398443148,"workspace_id":<TOGGL_WORKSPACE_ID>,"project_id":201899518,"task_id":null,"billable":false,"start":"2024-04-09T04:19:52+00:00","stop":"2024-04-09T04:23:08+00:00","duration":196,"description":"The
+        First task","tags":["tag_1","tag_3"],"tag_ids":[15986619,15986620],"duronly":true,"at":"2024-04-09T19:22:46+00:00","server_deleted_at":null,"user_id":10658406,"uid":10658406,"wid":<TOGGL_WORKSPACE_ID>,"pid":201899518,"permissions":null}],"projects":[{"id":201876878,"workspace_id":<TOGGL_WORKSPACE_ID>,"client_id":null,"name":"A
+        project","is_private":true,"active":true,"at":"2024-04-09T04:23:27+00:00","created_at":"2024-04-09T04:23:27+00:00","server_deleted_at":null,"color":"#c9806b","billable":null,"template":null,"auto_estimates":null,"estimated_hours":null,"estimated_seconds":null,"rate":null,"rate_last_updated":null,"currency":null,"recurring":false,"template_id":null,"recurring_parameters":null,"fixed_fee":null,"actual_hours":0,"actual_seconds":0,"start_date":"2024-04-09","status":"active","wid":<TOGGL_WORKSPACE_ID>,"cid":null,"permissions":null},{"id":201899518,"workspace_id":<TOGGL_WORKSPACE_ID>,"client_id":null,"name":"A
+        Different Project","is_private":true,"active":true,"at":"2024-04-09T19:05:31+00:00","created_at":"2024-04-09T19:05:31+00:00","server_deleted_at":null,"color":"#bf7000","billable":null,"template":null,"auto_estimates":null,"estimated_hours":null,"estimated_seconds":null,"rate":null,"rate_last_updated":null,"currency":null,"recurring":false,"template_id":null,"recurring_parameters":null,"fixed_fee":null,"actual_hours":0,"actual_seconds":202,"start_date":"2024-04-09","status":"active","wid":<TOGGL_WORKSPACE_ID>,"cid":null,"permissions":null}],"workspaces":[{"id":<TOGGL_WORKSPACE_ID>,"organization_id":8252502,"name":"toggltest''s
+        workspace","profile":0,"premium":false,"business_ws":false,"admin":true,"role":"admin","suspended_at":null,"server_deleted_at":null,"default_hourly_rate":null,"rate_last_updated":null,"default_currency":"USD","only_admins_may_create_projects":false,"only_admins_may_create_tags":false,"only_admins_see_billable_rates":false,"only_admins_see_team_dashboard":false,"projects_billable_by_default":true,"projects_private_by_default":true,"last_modified":"2024-04-09T00:00:00Z","reports_collapse":true,"rounding":1,"rounding_minutes":0,"api_token":"2f3d23fcb96702e1e4a9058f349dd6f3","at":"2024-04-09T03:12:46+00:00","logo_url":"https://assets.track.toggl.com/images/workspace.jpg","ical_url":"/ical/workspace_user/9d81b471f6ddc6705394635dd0f760dd","ical_enabled":true,"csv_upload":null,"subscription":null,"hide_start_end_times":false,"working_hours_in_minutes":null,"permissions":null}],"authorization_updated_at":"2024-04-09T19:05:32.790318Z"}'
+  recorded_at: Wed, 10 Apr 2024 04:20:44 GMT
+recorded_with: VCR 6.2.0
