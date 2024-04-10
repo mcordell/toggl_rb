@@ -5,7 +5,8 @@ require "json"
 module TogglRb
   module Reports
     class Detailed
-      # @param [Hash] params the options for searching for time entries for
+      # @param [String|Integer] workspace_id the toggl workspace id we are searching
+      # @param [Hash] params the options for searching for time entries
       # @option params [String]         :description          Description, optional, filtering attribute.
       # @option params [Array<Integer>] :client_ids           Client IDs, optional, filtering attribute. To filter records
       #                                                       with no clients, use [nil].
@@ -44,9 +45,7 @@ module TogglRb
       # @option params [Array<Integer>] :time_entry_ids       TimeEntryIDs filters by time entries. This was added to
       #                                                       support retro-compatibility with reports v2.
       # @option params [Array<Integer>] :user_ids             User IDs, optional, filtering attribute.
-      def search_time_entries(params = {})
-        workspace_id = params.delete(:workspace_id)
-        raise ArgumentError, ":workspace_id param must be provided" if workspace_id.nil?
+      def search_time_entries(workspace_id, params = {})
         raise ArgumentError, ":start_date param must be provided" unless params.key? :start_date
 
         resource_path = "workspace/#{workspace_id}/search/time_entries"
@@ -65,3 +64,4 @@ module TogglRb
     end
   end
 end
+
