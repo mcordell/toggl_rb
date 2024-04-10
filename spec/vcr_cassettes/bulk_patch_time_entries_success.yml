@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: https://api.track.toggl.com/api/v9/workspaces/<TOGGL_WORKSPACE_ID>/time_entries/3398443148,3398445220
+    body:
+      encoding: UTF-8
+      string: '[{"op":"replace","path":"/pid","value":201899518}]'
+    headers:
+      User-Agent:
+      - Faraday v2.9.0
+      Authorization:
+      - Basic <TOGGL_BASIC_AUTH>
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Wed, 10 Apr 2024 04:30:03 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '48'
+      cache-control:
+      - no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0
+      x-toggl-request-id:
+      - 0e8755aa-3213-4b58-bf98-0a16aa6ff8ab
+      x-service-level:
+      - GREEN
+      instance:
+      - track-public-api-proxy-6bc44dc6d5-mrzsv
+      strict-transport-security:
+      - max-age=15552000; includeSubDomains
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-we-are-hiring:
+      - https://toggl.com/jobs/
+      x-request-id:
+      - d03f76e10927edab54f6efa99d5c09fc
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      via:
+      - 1.1 google
+      alt-svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: '{"success":[3398443148,3398445220],"failure":[]}'
+  recorded_at: Wed, 10 Apr 2024 04:30:03 GMT
+recorded_with: VCR 6.2.0

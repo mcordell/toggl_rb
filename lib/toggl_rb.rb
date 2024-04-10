@@ -8,6 +8,7 @@ require_relative "toggl_rb/param"
 require_relative "toggl_rb/params"
 require_relative "toggl_rb/endpoint_dsl"
 require_relative "toggl_rb/reports"
+require_relative "toggl_rb/core"
 require_relative "toggl_rb/version"
 require_relative "toggl_rb/json_patch"
 
