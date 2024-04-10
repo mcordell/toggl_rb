@@ -24,7 +24,7 @@ RSpec.describe "Reporting - V3 - Detailed Reporting", type: :feature do
       it "throws an ArgumentError" do
         expect do
           @client.search_time_entries(workspace_id, project_ids: [nil])
-        end.to raise_error(ArgumentError, ":start_date param must be provided")
+        end.to raise_error(ArgumentError, "start_date param must be provided")
       end
     end
   end

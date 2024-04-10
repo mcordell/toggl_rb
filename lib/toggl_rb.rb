@@ -25,4 +25,3 @@ module TogglRb
     @client ||= Client.new
   end
 end
-
