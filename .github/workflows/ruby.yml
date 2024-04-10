@@ -39,3 +39,6 @@ jobs:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Run tests
         run: bundle exec rspec
+
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v2.2.3
