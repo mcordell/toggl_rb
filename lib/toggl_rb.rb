@@ -9,6 +9,7 @@ require_relative "toggl_rb/params"
 require_relative "toggl_rb/endpoint_dsl"
 require_relative "toggl_rb/reports"
 require_relative "toggl_rb/version"
+require_relative "toggl_rb/json_patch"
 
 module TogglRb
   class Error < StandardError; end
@@ -23,5 +24,9 @@ module TogglRb
 
   def self.client
     @client ||= Client.new
+  end
+
+  def self.operation(operations = [])
+    JSONPatch.new(operations)
   end
 end
