@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "forwardable"
+require_relative "toggl_rb/response"
 require_relative "toggl_rb/client"
 require_relative "toggl_rb/config"
 require_relative "toggl_rb/reports"
