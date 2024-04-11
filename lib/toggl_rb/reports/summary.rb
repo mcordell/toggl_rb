@@ -37,7 +37,20 @@ module TogglRb
         params_object.validate_required!
         resource_path = format(request_path, workspace_id: workspace_id)
         response = send_request(request_method, resource_path, params_object)
-        response.body_json
+        request_options = params.fetch(:request_options, {})
+        get_all = request_options.fetch(:get_all, false)
+
+        return response.body_json unless get_all
+
+        all_tasks = response.body_json
+
+        while response.more?
+          params_object.first_row_number = response.next_row_number
+          response = send_request(request_method, resource_path, params_object)
+          all_tasks += response.body_json
+        end
+
+        all_tasks
       end
 
       private
@@ -53,4 +66,3 @@ module TogglRb
     end
   end
 end
-

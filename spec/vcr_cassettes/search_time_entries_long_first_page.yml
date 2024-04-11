@@ -1,0 +1,170 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.track.toggl.com/reports/api/v3/workspace/<TOGGL_WORKSPACE_ID>/search/time_entries
+    body:
+      encoding: UTF-8
+      string: '{"start_date":"2023-12-01","end_date":"2023-12-31"}'
+    headers:
+      User-Agent:
+      - Faraday v2.9.0
+      Authorization:
+      - Basic <TOGGL_BASIC_AUTH>
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Sun, 14 Apr 2024 17:12:18 GMT
+      content-type:
+      - application/json; charset=utf-8
+      vary:
+      - Accept-Encoding
+      x-next-id:
+      - '3405903924'
+      x-next-row-number:
+      - '51'
+      x-next-timestamp:
+      - '1702202400'
+      x-page-size:
+      - '50'
+      x-range-end:
+      - '2023-12-31'
+      x-range-start:
+      - '2023-12-01'
+      x-service-level:
+      - GREEN
+      instance:
+      - track-public-api-proxy-6bc44dc6d5-7wdt5
+      strict-transport-security:
+      - max-age=15552000; includeSubDomains
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-we-are-hiring:
+      - https://toggl.com/jobs/
+      x-request-id:
+      - 75309ed34020f789076522c110203c1f
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      content-encoding:
+      - gzip
+      via:
+      - 1.1 google
+      alt-svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '[{"user_id":10658406,"username":"Michael C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 1","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903820,"seconds":2700,"start":"2023-12-08T00:00:00-08:00","stop":"2023-12-08T00:45:00-08:00","at":"2024-04-14T17:03:50+00:00"}],"row_number":1},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 2","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903821,"seconds":2700,"start":"2023-12-08T01:00:00-08:00","stop":"2023-12-08T01:45:00-08:00","at":"2024-04-14T17:03:50+00:00"}],"row_number":2},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 3","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903823,"seconds":2700,"start":"2023-12-08T02:00:00-08:00","stop":"2023-12-08T02:45:00-08:00","at":"2024-04-14T17:03:50+00:00"}],"row_number":3},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 4","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903825,"seconds":2700,"start":"2023-12-08T03:00:00-08:00","stop":"2023-12-08T03:45:00-08:00","at":"2024-04-14T17:03:50+00:00"}],"row_number":4},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 5","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903826,"seconds":2700,"start":"2023-12-08T04:00:00-08:00","stop":"2023-12-08T04:45:00-08:00","at":"2024-04-14T17:03:51+00:00"}],"row_number":5},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 6","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903827,"seconds":2700,"start":"2023-12-08T05:00:00-08:00","stop":"2023-12-08T05:45:00-08:00","at":"2024-04-14T17:03:51+00:00"}],"row_number":6},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 7","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903829,"seconds":2700,"start":"2023-12-08T06:00:00-08:00","stop":"2023-12-08T06:45:00-08:00","at":"2024-04-14T17:03:51+00:00"}],"row_number":7},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 8","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903831,"seconds":2700,"start":"2023-12-08T07:00:00-08:00","stop":"2023-12-08T07:45:00-08:00","at":"2024-04-14T17:03:51+00:00"}],"row_number":8},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 9","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903833,"seconds":2700,"start":"2023-12-08T08:00:00-08:00","stop":"2023-12-08T08:45:00-08:00","at":"2024-04-14T17:03:51+00:00"}],"row_number":9},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 10","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903836,"seconds":2700,"start":"2023-12-08T09:00:00-08:00","stop":"2023-12-08T09:45:00-08:00","at":"2024-04-14T17:03:51+00:00"}],"row_number":10},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 11","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903838,"seconds":2700,"start":"2023-12-08T10:00:00-08:00","stop":"2023-12-08T10:45:00-08:00","at":"2024-04-14T17:03:52+00:00"}],"row_number":11},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 12","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903841,"seconds":2700,"start":"2023-12-08T11:00:00-08:00","stop":"2023-12-08T11:45:00-08:00","at":"2024-04-14T17:03:52+00:00"}],"row_number":12},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 13","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903844,"seconds":2700,"start":"2023-12-08T12:00:00-08:00","stop":"2023-12-08T12:45:00-08:00","at":"2024-04-14T17:03:52+00:00"}],"row_number":13},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 14","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903847,"seconds":2700,"start":"2023-12-08T13:00:00-08:00","stop":"2023-12-08T13:45:00-08:00","at":"2024-04-14T17:03:52+00:00"}],"row_number":14},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 15","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903849,"seconds":2700,"start":"2023-12-08T14:00:00-08:00","stop":"2023-12-08T14:45:00-08:00","at":"2024-04-14T17:03:52+00:00"}],"row_number":15},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 16","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903852,"seconds":2700,"start":"2023-12-08T15:00:00-08:00","stop":"2023-12-08T15:45:00-08:00","at":"2024-04-14T17:03:53+00:00"}],"row_number":16},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 17","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903857,"seconds":2700,"start":"2023-12-08T16:00:00-08:00","stop":"2023-12-08T16:45:00-08:00","at":"2024-04-14T17:03:53+00:00"}],"row_number":17},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 18","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903858,"seconds":2700,"start":"2023-12-08T17:00:00-08:00","stop":"2023-12-08T17:45:00-08:00","at":"2024-04-14T17:03:53+00:00"}],"row_number":18},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 19","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903859,"seconds":2700,"start":"2023-12-08T18:00:00-08:00","stop":"2023-12-08T18:45:00-08:00","at":"2024-04-14T17:03:53+00:00"}],"row_number":19},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 20","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903861,"seconds":2700,"start":"2023-12-08T19:00:00-08:00","stop":"2023-12-08T19:45:00-08:00","at":"2024-04-14T17:03:53+00:00"}],"row_number":20},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 21","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903863,"seconds":2700,"start":"2023-12-08T20:00:00-08:00","stop":"2023-12-08T20:45:00-08:00","at":"2024-04-14T17:03:53+00:00"}],"row_number":21},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 22","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903866,"seconds":2700,"start":"2023-12-08T21:00:00-08:00","stop":"2023-12-08T21:45:00-08:00","at":"2024-04-14T17:03:54+00:00"}],"row_number":22},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 23","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903867,"seconds":2700,"start":"2023-12-08T22:00:00-08:00","stop":"2023-12-08T22:45:00-08:00","at":"2024-04-14T17:03:54+00:00"}],"row_number":23},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 24","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903868,"seconds":2700,"start":"2023-12-08T23:00:00-08:00","stop":"2023-12-08T23:45:00-08:00","at":"2024-04-14T17:03:54+00:00"}],"row_number":24},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 25","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903871,"seconds":2700,"start":"2023-12-09T00:00:00-08:00","stop":"2023-12-09T00:45:00-08:00","at":"2024-04-14T17:03:54+00:00"}],"row_number":25},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 26","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903874,"seconds":2700,"start":"2023-12-09T01:00:00-08:00","stop":"2023-12-09T01:45:00-08:00","at":"2024-04-14T17:03:54+00:00"}],"row_number":26},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 27","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903875,"seconds":2700,"start":"2023-12-09T02:00:00-08:00","stop":"2023-12-09T02:45:00-08:00","at":"2024-04-14T17:03:54+00:00"}],"row_number":27},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 28","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903876,"seconds":2700,"start":"2023-12-09T03:00:00-08:00","stop":"2023-12-09T03:45:00-08:00","at":"2024-04-14T17:03:55+00:00"}],"row_number":28},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 29","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903880,"seconds":2700,"start":"2023-12-09T04:00:00-08:00","stop":"2023-12-09T04:45:00-08:00","at":"2024-04-14T17:03:55+00:00"}],"row_number":29},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 30","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903881,"seconds":2700,"start":"2023-12-09T05:00:00-08:00","stop":"2023-12-09T05:45:00-08:00","at":"2024-04-14T17:03:55+00:00"}],"row_number":30},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 31","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903883,"seconds":2700,"start":"2023-12-09T06:00:00-08:00","stop":"2023-12-09T06:45:00-08:00","at":"2024-04-14T17:03:55+00:00"}],"row_number":31},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 32","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903885,"seconds":2700,"start":"2023-12-09T07:00:00-08:00","stop":"2023-12-09T07:45:00-08:00","at":"2024-04-14T17:03:55+00:00"}],"row_number":32},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 33","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903888,"seconds":2700,"start":"2023-12-09T08:00:00-08:00","stop":"2023-12-09T08:45:00-08:00","at":"2024-04-14T17:03:56+00:00"}],"row_number":33},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 34","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903892,"seconds":2700,"start":"2023-12-09T09:00:00-08:00","stop":"2023-12-09T09:45:00-08:00","at":"2024-04-14T17:03:56+00:00"}],"row_number":34},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 35","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903893,"seconds":2700,"start":"2023-12-09T10:00:00-08:00","stop":"2023-12-09T10:45:00-08:00","at":"2024-04-14T17:03:56+00:00"}],"row_number":35},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 36","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903896,"seconds":2700,"start":"2023-12-09T11:00:00-08:00","stop":"2023-12-09T11:45:00-08:00","at":"2024-04-14T17:03:56+00:00"}],"row_number":36},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 37","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903897,"seconds":2700,"start":"2023-12-09T12:00:00-08:00","stop":"2023-12-09T12:45:00-08:00","at":"2024-04-14T17:03:56+00:00"}],"row_number":37},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 38","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903898,"seconds":2700,"start":"2023-12-09T13:00:00-08:00","stop":"2023-12-09T13:45:00-08:00","at":"2024-04-14T17:03:56+00:00"}],"row_number":38},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 39","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903901,"seconds":2700,"start":"2023-12-09T14:00:00-08:00","stop":"2023-12-09T14:45:00-08:00","at":"2024-04-14T17:03:57+00:00"}],"row_number":39},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 40","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903904,"seconds":2700,"start":"2023-12-09T15:00:00-08:00","stop":"2023-12-09T15:45:00-08:00","at":"2024-04-14T17:03:57+00:00"}],"row_number":40},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 41","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903905,"seconds":2700,"start":"2023-12-09T16:00:00-08:00","stop":"2023-12-09T16:45:00-08:00","at":"2024-04-14T17:03:57+00:00"}],"row_number":41},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 42","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903906,"seconds":2700,"start":"2023-12-09T17:00:00-08:00","stop":"2023-12-09T17:45:00-08:00","at":"2024-04-14T17:03:57+00:00"}],"row_number":42},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 43","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903907,"seconds":2700,"start":"2023-12-09T18:00:00-08:00","stop":"2023-12-09T18:45:00-08:00","at":"2024-04-14T17:03:57+00:00"}],"row_number":43},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 44","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903908,"seconds":2700,"start":"2023-12-09T19:00:00-08:00","stop":"2023-12-09T19:45:00-08:00","at":"2024-04-14T17:03:58+00:00"}],"row_number":44},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 45","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903910,"seconds":2700,"start":"2023-12-09T20:00:00-08:00","stop":"2023-12-09T20:45:00-08:00","at":"2024-04-14T17:03:58+00:00"}],"row_number":45},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 46","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903913,"seconds":2700,"start":"2023-12-09T21:00:00-08:00","stop":"2023-12-09T21:45:00-08:00","at":"2024-04-14T17:03:58+00:00"}],"row_number":46},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 47","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903916,"seconds":2700,"start":"2023-12-09T22:00:00-08:00","stop":"2023-12-09T22:45:00-08:00","at":"2024-04-14T17:03:58+00:00"}],"row_number":47},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 48","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903918,"seconds":2700,"start":"2023-12-09T23:00:00-08:00","stop":"2023-12-09T23:45:00-08:00","at":"2024-04-14T17:03:58+00:00"}],"row_number":48},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 49","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903920,"seconds":2700,"start":"2023-12-10T00:00:00-08:00","stop":"2023-12-10T00:45:00-08:00","at":"2024-04-14T17:03:58+00:00"}],"row_number":49},{"user_id":10658406,"username":"Michael
+        C","project_id":201990887,"task_id":null,"billable":false,"description":"Older
+        task 50","tag_ids":[],"billable_amount_in_cents":null,"hourly_rate_in_cents":null,"currency":"USD","time_entries":[{"id":3405903923,"seconds":2700,"start":"2023-12-10T01:00:00-08:00","stop":"2023-12-10T01:45:00-08:00","at":"2024-04-14T17:03:59+00:00"}],"row_number":50}]'
+  recorded_at: Sun, 14 Apr 2024 17:12:18 GMT
+recorded_with: VCR 6.2.0
