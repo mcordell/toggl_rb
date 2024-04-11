@@ -16,6 +16,7 @@ module TogglRb
         param_definitions[method_name] = @current_params || {}
         method_request_paths[method_name] = @current_path
         method_request_methods[method_name] = @current_method_type
+        method_query_params[method_name] = @current_query_params || {}
         @current_params = nil # Reset for the next method
         @current_path = nil
         @current_method_type = nil
@@ -37,6 +38,10 @@ module TogglRb
         @param_definitions ||= {}
       end
 
+      def method_query_params
+        @method_query_params ||= {}
+      end
+
       def method_request_paths
         @method_request_paths ||= {}
       end
@@ -49,6 +54,11 @@ module TogglRb
         @current_params ||= {}
         @current_params[name] = { type: type, other_args: other_args }
       end
+
+      def query_param(name, type, *other_args)
+        @current_query_params ||= {}
+        @current_query_params[name] = { type: type, other_args: other_args }
+      end
     end
 
     def params_for_method(method_name)
@@ -60,6 +70,11 @@ module TogglRb
       Params.build(params_for_method(caller_info.label.to_sym), request_params)
     end
 
+    def build_query_params(request_params)
+      caller_info = caller_locations(1, 1).first
+      QueryParams.build(query_params_for_method(caller_info.label.to_sym), request_params)
+    end
+
     def request_path
       caller_info = caller_locations(1, 1).first
       self.class.method_request_paths.fetch(caller_info.label.to_sym)
@@ -68,6 +83,10 @@ module TogglRb
     def request_method
       caller_info = caller_locations(1, 1).first
       self.class.method_request_methods.fetch(caller_info.label.to_sym)
+    end
+
+    def query_params_for_method(method_name)
+      self.class.method_query_params[method_name] || {}
     end
   end
 end
