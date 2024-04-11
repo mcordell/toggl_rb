@@ -42,10 +42,20 @@ RSpec.describe TogglRb::Params do
   end
 
   describe "#to_json" do
-    subject(:result) { instance.to_json }
+    context "without first_row_number set" do
+      it "converts request_params to JSON without altering them" do
+        expect(instance.to_json).to eq(request_params.to_json)
+      end
+    end
 
-    it "converts request_params to JSON" do
-      expect(result).to eq(request_params.to_json)
+    context "with first_row_number set" do
+      let(:first_row_number) { 10 }
+      before { instance.first_row_number = first_row_number }
+
+      it "includes first_row_number in the JSON output" do
+        expected_params = request_params.merge("first_row_number" => first_row_number)
+        expect(JSON.parse(instance.to_json)).to include(expected_params)
+      end
     end
   end
 end

@@ -2,7 +2,7 @@
 
 module TogglRb
   class Params
-    attr_accessor(:request_params)
+    attr_accessor(:request_params, :first_row_number)
     attr_reader :definition
 
     def self.build(params_definition, request_params)
@@ -26,7 +26,14 @@ module TogglRb
     end
 
     def to_json(*_args)
-      request_params.to_json
+      processed_params.to_json
+    end
+
+    def processed_params
+      return request_params unless @first_row_number
+
+      request_params[:first_row_number] = first_row_number.to_i
+      request_params
     end
 
     private
