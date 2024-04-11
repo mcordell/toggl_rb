@@ -46,24 +46,31 @@ module TogglRb
             description: "filter by client ids. Use [nil] to filter records with no clients"
       param :group_ids, "IntegerArray", description: "filter by group ids"
       def search_time_entries(workspace_id, params = {})
+        request_options = params.delete(:request_options) || {}
         params_object = build_params(params)
         params_object.validate_required!
+        resource_path = format(request_path, workspace_id: workspace_id)
+        response = send_request(request_method, resource_path, params_object)
+        get_all = request_options.fetch(:get_all, false)
 
-        response = send_request(
-          request_method,
-          format(request_path, workspace_id: workspace_id),
-          params_object
-        )
+        return response.body_json unless get_all
 
-        return {} if response == {}
+        all_tasks = response.body_json
 
-        JSON.parse(response.body)
+        while response.more?
+          params_object.first_row_number = response.next_row_number
+          response = send_request(request_method, resource_path, params_object)
+          all_tasks += response.body_json
+        end
+
+        all_tasks
       end
 
       private
 
-      def send_request(request_method, resource_path, params)
-        connection.send(request_method, resource_path, params.to_json)
+      def send_request(request_method, resource_path, body)
+        params = body.to_json unless body.is_a?(String)
+        TogglRb::Response.new(connection.send(request_method, resource_path, params))
       end
 
       def connection
