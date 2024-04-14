@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.track.toggl.com/reports/api/v3/workspace/<TOGGL_WORKSPACE_ID>/summary/time_entries
+    body:
+      encoding: UTF-8
+      string: '{"start_date":"2024-04-01","end_date":"2024-04-15","grouping":"projects"}'
+    headers:
+      User-Agent:
+      - Faraday v2.9.0
+      Authorization:
+      - Basic <TOGGL_BASIC_AUTH>
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Sun, 14 Apr 2024 16:47:25 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '644'
+      x-grouping:
+      - projects
+      x-range-end:
+      - '2024-04-15'
+      x-range-start:
+      - '2024-04-01'
+      x-sub-grouping:
+      - time_entries
+      x-service-level:
+      - GREEN
+      instance:
+      - track-public-api-proxy-6bc44dc6d5-mrzsv
+      strict-transport-security:
+      - max-age=15552000; includeSubDomains
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-we-are-hiring:
+      - https://toggl.com/jobs/
+      x-request-id:
+      - 4af67b5e821b101de8ef8fe4d469e05a
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      via:
+      - 1.1 google
+      alt-svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: '{"groups":[{"id":201876878,"sub_groups":[{"id":null,"title":"CREATE
+        time entry","seconds":3600,"local_start":"2024-04-10T01:00:00Z","project_color":"0","project_hex_color":"#c9806b","ForExport":false,"DistinguishRates":false,"Grouping":"projects","SubGrouping":"time_entries"}],"project_color":"0","project_hex_color":"#c9806b"},{"id":201899518,"sub_groups":[{"id":null,"title":"The
+        First task","seconds":202,"local_start":"2024-04-08T21:19:52Z","project_color":"0","project_hex_color":"#bf7000","ForExport":false,"DistinguishRates":false,"Grouping":"projects","SubGrouping":"time_entries"}],"project_color":"0","project_hex_color":"#bf7000"}]}'
+  recorded_at: Sun, 14 Apr 2024 16:47:25 GMT
+recorded_with: VCR 6.2.0

@@ -5,6 +5,7 @@ module TogglRb
   #                reports from the Toggl API.
   module Reports
     require_relative "reports/detailed"
+    require_relative "reports/summary"
 
     def self.connection
       TogglRb.client.reports_connection
