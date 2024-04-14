@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://api.track.toggl.com/api/v9/workspaces/<TOGGL_WORKSPACE_ID>/users
+    method: post
+    uri: https://api.track.toggl.com/reports/api/v3/workspace/<TOGGL_WORKSPACE_ID>/summary/time_entries
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"project_ids":[null],"start_date":"2024-04-07"}'
     headers:
       User-Agent:
       - Faraday v2.9.0
@@ -23,19 +23,23 @@ http_interactions:
       server:
       - nginx
       date:
-      - Sun, 14 Apr 2024 16:20:21 GMT
+      - Fri, 12 Apr 2024 22:38:41 GMT
       content-type:
       - application/json; charset=utf-8
       content-length:
-      - '121'
-      cache-control:
-      - no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0
-      x-toggl-request-id:
-      - 1d4c94c1-16b3-4537-98db-843a41495142
+      - '13'
+      x-grouping:
+      - projects
+      x-range-end:
+      - '2024-04-13'
+      x-range-start:
+      - '2024-04-07'
+      x-sub-grouping:
+      - time_entries
       x-service-level:
       - GREEN
       instance:
-      - track-public-api-proxy-6bc44dc6d5-mrzsv
+      - track-public-api-proxy-6bc44dc6d5-7wdt5
       strict-transport-security:
       - max-age=15552000; includeSubDomains
       x-frame-options:
@@ -45,7 +49,7 @@ http_interactions:
       x-we-are-hiring:
       - https://toggl.com/jobs/
       x-request-id:
-      - 40fb83360a53385569273968e25ce88a
+      - ae277ffd1cf149854d8d5961a60b4ad9
       referrer-policy:
       - strict-origin-when-cross-origin
       via:
@@ -54,6 +58,6 @@ http_interactions:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
     body:
       encoding: UTF-8
-      string: '[{"id":10658406,"fullname":"Michael C","email":"<TOGGL_USER_EMAIL>","is_active":true,"is_admin":true,"inactive":false}]'
-  recorded_at: Sun, 14 Apr 2024 16:20:21 GMT
+      string: '{"groups":[]}'
+  recorded_at: Fri, 12 Apr 2024 22:38:41 GMT
 recorded_with: VCR 6.2.0

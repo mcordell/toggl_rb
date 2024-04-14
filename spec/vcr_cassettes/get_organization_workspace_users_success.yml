@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.track.toggl.com/api/v9/workspaces/<TOGGL_WORKSPACE_ID>/users
+    uri: https://api.track.toggl.com/api/v9/organizations/<TOGGL_ORGANIZATION_ID>/workspaces/<TOGGL_WORKSPACE_ID>/groups
     body:
       encoding: US-ASCII
       string: ''
@@ -23,15 +23,15 @@ http_interactions:
       server:
       - nginx
       date:
-      - Sun, 14 Apr 2024 16:20:21 GMT
+      - Sat, 13 Apr 2024 20:05:21 GMT
       content-type:
       - application/json; charset=utf-8
       content-length:
-      - '121'
+      - '178'
       cache-control:
       - no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0
       x-toggl-request-id:
-      - 1d4c94c1-16b3-4537-98db-843a41495142
+      - '09278861-6a9b-489f-8ca3-2fa8aaa9b663'
       x-service-level:
       - GREEN
       instance:
@@ -45,7 +45,7 @@ http_interactions:
       x-we-are-hiring:
       - https://toggl.com/jobs/
       x-request-id:
-      - 40fb83360a53385569273968e25ce88a
+      - 63661f94788e75fe8d77ef90d4c1d0b8
       referrer-policy:
       - strict-origin-when-cross-origin
       via:
@@ -54,6 +54,7 @@ http_interactions:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
     body:
       encoding: UTF-8
-      string: '[{"id":10658406,"fullname":"Michael C","email":"<TOGGL_USER_EMAIL>","is_active":true,"is_admin":true,"inactive":false}]'
-  recorded_at: Sun, 14 Apr 2024 16:20:21 GMT
+      string: '[{"group_id":188929,"name":"Cool Kids","at":"2024-04-13T20:04:48.278682Z","workspaces":[<TOGGL_WORKSPACE_ID>],"users":[{"user_id":10658406,"name":"Michael
+        C","avatar_url":"","joined":true}]}]'
+  recorded_at: Sat, 13 Apr 2024 20:05:21 GMT
 recorded_with: VCR 6.2.0

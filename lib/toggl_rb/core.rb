@@ -5,6 +5,7 @@ module TogglRb
     require_relative "core/groups"
     require_relative "core/projects"
     require_relative "core/time_entries"
+    require_relative "core/users"
     require_relative "core/me"
 
     def self.connection
@@ -12,4 +13,3 @@ module TogglRb
     end
   end
 end
-
