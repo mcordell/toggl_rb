@@ -2,6 +2,7 @@
 
 [![Ruby](https://github.com/mcordell/toggl_rb/actions/workflows/ruby.yml/badge.svg)](https://github.com/mcordell/toggl_rb/actions/workflows/ruby.yml)
 [![Coverage Status](https://coveralls.io/repos/github/mcordell/toggl_rb/badge.svg)](https://coveralls.io/github/mcordell/toggl_rb)
+[![Gem Version](https://badge.fury.io/rb/toggl_rb.svg)](https://badge.fury.io/rb/toggl_rb.svg)
 
 TODO: Delete this and the text below, and describe your gem
 
