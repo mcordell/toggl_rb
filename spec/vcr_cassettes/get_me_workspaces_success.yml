@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.track.toggl.com/api/v9/me/workspaces
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.9.0
+      Authorization:
+      - Basic <TOGGL_BASIC_AUTH>
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Sun, 14 Apr 2024 17:37:57 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '943'
+      cache-control:
+      - no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0
+      x-toggl-request-id:
+      - 4cd85174-af55-4987-997f-d75fd23503f8
+      x-service-level:
+      - GREEN
+      instance:
+      - track-public-api-proxy-6bc44dc6d5-mrzsv
+      strict-transport-security:
+      - max-age=15552000; includeSubDomains
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-we-are-hiring:
+      - https://toggl.com/jobs/
+      x-request-id:
+      - d8b8189e66a2d17a969236d1b8f0abf6
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      via:
+      - 1.1 google
+      alt-svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: '[{"id":<TOGGL_WORKSPACE_ID>,"organization_id":<TOGGL_ORGANIZATION_ID>,"name":"toggltest''s
+        workspace","profile":0,"premium":false,"business_ws":false,"admin":true,"role":"admin","suspended_at":null,"server_deleted_at":null,"default_hourly_rate":null,"rate_last_updated":null,"default_currency":"USD","only_admins_may_create_projects":false,"only_admins_may_create_tags":false,"only_admins_see_billable_rates":false,"only_admins_see_team_dashboard":false,"projects_billable_by_default":true,"projects_private_by_default":true,"last_modified":"2024-04-14T00:00:00Z","reports_collapse":true,"rounding":1,"rounding_minutes":0,"api_token":"2f3d23fcb96702e1e4a9058f349dd6f3","at":"2024-04-14T17:01:34+00:00","logo_url":"https://assets.track.toggl.com/images/workspace.jpg","ical_url":"/ical/workspace_user/9d81b471f6ddc6705394635dd0f760dd","ical_enabled":true,"csv_upload":null,"subscription":null,"hide_start_end_times":false,"working_hours_in_minutes":null,"permissions":null}]'
+  recorded_at: Sun, 14 Apr 2024 17:37:57 GMT
+recorded_with: VCR 6.2.0
