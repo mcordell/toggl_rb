@@ -14,6 +14,16 @@ module TogglRb
         send_request(request_method, resource_path).body_json
       end
 
+      request_method :get
+      request_path "me/workspaces"
+      query_param :since, Date,
+                  description: "Retrieve workspaces created/modified/deleted since this date using UNIX timestamp, " \
+                               "including the dates a workspace member got added, removed or updated in the workspace."
+      def workspaces(_params = {})
+        # TODO: implement since query_param
+        send_request(request_method, request_path).body_json
+      end
+
       private
 
       def send_request(request_method, resource_path, body = nil)
