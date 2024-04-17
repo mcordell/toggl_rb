@@ -4,25 +4,52 @@
 [![Coverage Status](https://coveralls.io/repos/github/mcordell/toggl_rb/badge.svg)](https://coveralls.io/github/mcordell/toggl_rb)
 [![Gem Version](https://badge.fury.io/rb/toggl_rb.svg)](https://badge.fury.io/rb/toggl_rb.svg)
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/toggl_rb`. To experiment with that code, run `bin/console` for an interactive prompt.
+> A ruby API client for toggl's V9 API and V3 Reports API.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
-
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+    $ bundle add toggl_rb
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+    $ gem install toggl_rb
 
 ## Usage
 
-TODO: Write usage instructions here
+Currently TogglRb only supports a select subset of endpoints:
+
+| Group       | Endpoint                                                                                                               | Status |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------- | :----: |
+| Me          | [GET Me](https://engineering.toggl.com/docs/api/me/index.html#get-me)                                                  |   ✔️   |
+| Me          | [GET Workspaces](https://engineering.toggl.com/docs/api/me/index.html#get-workspaces)                                  |   ✔️   |
+| Groups      | [GET List of groups in a workspace within an organization with user assignments][group-doc]                            |   ✔️   |
+| Projects    | [GET WorkspaceProjects](https://engineering.toggl.com/docs/api/projects#get-workspaceprojects)                         |   ✔️   |
+| Projects    | [POST WorkspaceProjects](https://engineering.toggl.com/docs/api/projects#post-workspaceprojects)                       |   ✔️   |
+| Users       | [GET List of users who belong to the given workspace](workspace-users-doc)                                             |   ✔️   |
+| TimeEntries | [GET TimeEntries](https://engineering.toggl.com/docs/api/time_entries#get-timeentries)                                 |   🔲   |
+| TimeEntries | [GET Get current time entry](https://engineering.toggl.com/docs/api/time_entries#get-get-current-time-entry)           |   🔲   |
+| TimeEntries | [GET Get a time entry by ID](https://engineering.toggl.com/docs/api/time_entries#get-get-a-time-entry-by-id)           |   🔲   |
+| TimeEntries | [POST TimeEntries](https://engineering.toggl.com/docs/api/time_entries#post-timeentries)                               |   ✔️   |
+| TimeEntries | [PATCH Bulk editing time entries](https://engineering.toggl.com/docs/api/time_entries#patch-bulk-editing-time-entries) |   ✔️   |
+| TimeEntries | [PUT TimeEntries](https://engineering.toggl.com/docs/api/time_entries#put-timeentries)                                 |   🔲   |
+| TimeEntries | [DELETE TimeEntries](https://engineering.toggl.com/docs/api/time_entries#delete-timeentries)                           |   🔲   |
+| TimeEntries | [PATCH Stop TimeEntry](https://engineering.toggl.com/docs/api/time_entries#patch-stop-timeentry)                       |   🔲   |
+
+On The Reporting Endpoints
+
+| Group    | Endpoint                                                                                                                         | Status |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------- | :----: |
+| Detailed | [POST Search time entries](https://engineering.toggl.com/docs/reports/detailed_reports#post-search-time-entries)                 |   ✔️   |
+| Detailed | [POST Export detailed report](https://engineering.toggl.com/docs/reports/detailed_reports#post-export-detailed-report)           |   🔲   |
+| Detailed | [POST Export detailed report](https://engineering.toggl.com/docs/reports/detailed_reports#post-export-detailed-report-1)         |   🔲   |
+| Detailed | [POST Load totals detailed report](https://engineering.toggl.com/docs/reports/detailed_reports#post-load-totals-detailed-report) |   🔲   |
+| Summary  | [POST List project users](https://engineering.toggl.com/docs/reports/summary_reports#post-list-project-users)                    |   🔲   |
+| Summary  | [POST Load project summary](https://engineering.toggl.com/docs/reports/summary_reports#post-load-project-summary)                |   🔲   |
+| Summary  | [POST Search time entries](https://engineering.toggl.com/docs/reports/summary_reports#post-search-time-entries)                  |   ✔️   |
+| Summary  | [POST Export summary report](https://engineering.toggl.com/docs/reports/summary_reports#post-export-summary-report)              |   🔲   |
+| Summary  | [POST Export summary report](https://engineering.toggl.com/docs/reports/summary_reports#post-export-summary-report-1)            |   🔲   |
 
 ## Development
 
@@ -33,3 +60,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/mcordell/toggl_rb.
+
+[group-doc]: https://engineering.toggl.com/docs/api/groups#get-list-of-groups-in-a-workspace-within-an-organization-with-user-assignments
+[workspace-users-doc]: https://engineering.toggl.com/docs/api/workspaces#get-list-of-users-who-belong-to-the-given-workspace
