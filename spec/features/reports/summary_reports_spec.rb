@@ -13,8 +13,8 @@ RSpec.describe "Reporting - V3 - Detailed Reporting", type: :feature do
       it "returns an array of time entry hashes" do
         VCR.use_cassette("serach_summary_time_entries_success") do
           response = @client.search_time_entries(workspace_id,
-                                                 { start_date: "2024-04-01",
-                                                   end_date: "2024-04-15", grouping: "projects" })
+                                                 start_date: "2024-04-01",
+                                                 end_date: "2024-04-15", grouping: "projects")
 
           expect(response).to match(
             { "groups" =>

@@ -28,15 +28,11 @@ module TogglRb
       param :task_id, Integer, optional: true, description: "Task ID."
       param :user_id, Integer, optional: true, description: "Time Entry creator ID; uses requester ID if omitted."
       param :workspace_id, Integer, required: true, description: "Workspace ID."
-      # NOTE: tid is a legacy field for Task ID.
-      # Note: uid is a legacy field for Time Entry creator ID.
-      # NOTE: duronly is deprecated and can be ignored.
-      # NOTE: wid is a legacy param for Workspace ID which will be populated with the passed argument
-      def create(workspace_id, time_entry_attributes)
-        time_entry_attributes[:wid] = workspace_id.to_i
+      def create(workspace_id, params)
+        params[:wid] = workspace_id.to_i
         resource_path = format(request_path, workspace_id: workspace_id)
 
-        send_request(request_method, resource_path, time_entry_attributes).body_json
+        send_request(request_method, resource_path, params).body_json
       end
 
       request_method :patch
