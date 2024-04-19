@@ -15,7 +15,26 @@ RSpec.describe TogglRb::Params do
       subject { described_class.build(params_definition, request_params) }
 
       it "initializes with given definitions and sets request_params" do
-        expect(subject.request_params).to eq(request_params)
+        expect(subject.request_params).to eq(request_params.transform_keys(&:to_sym))
+      end
+    end
+  end
+
+  describe "request_params=" do
+    subject { instance.request_params = request_params }
+    context "when passed a hash" do
+      context "with string keys" do
+        it "symbolizes the keys" do
+          expect(instance.request_params.keys).to match(%i[user_id name])
+        end
+      end
+
+      context "when passed a hash with neither string nor symbol keys" do
+        let(:request_params) { { Date.new(2024, 2, 1) => "date_value" } }
+
+        it "raises an ArgumentError" do
+          expect { subject }.to raise_error ArgumentError
+        end
       end
     end
   end
@@ -27,8 +46,7 @@ RSpec.describe TogglRb::Params do
       let(:request_params) { { "user_id" => 123 } }
 
       it "does not raise an error" do
-        instance.request_params =
-          expect { subject }.not_to raise_error
+        expect { subject }.not_to raise_error
       end
     end
 
