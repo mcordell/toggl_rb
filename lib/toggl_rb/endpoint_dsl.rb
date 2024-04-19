@@ -59,6 +59,10 @@ module TogglRb
         @current_query_params ||= {}
         @current_query_params[name] = { type: type, other_args: other_args }
       end
+
+      def end_point_method_names
+        method_request_paths.keys
+      end
     end
 
     def params_for_method(method_name)
@@ -66,27 +70,37 @@ module TogglRb
     end
 
     def build_params(request_params)
-      caller_info = caller_locations(1, 1).first
-      Params.build(params_for_method(caller_info.label.to_sym), request_params)
+      Params.build(params_for_method(extract_calling_method), request_params)
     end
 
     def build_query_params(request_params)
-      caller_info = caller_locations(1, 1).first
-      QueryParams.build(query_params_for_method(caller_info.label.to_sym), request_params)
+      QueryParams.build(query_params_for_method(extract_calling_method), request_params)
     end
 
     def request_path
-      caller_info = caller_locations(1, 1).first
-      self.class.method_request_paths.fetch(caller_info.label.to_sym)
+      self.class.method_request_paths.fetch(extract_calling_method)
     end
 
     def request_method
-      caller_info = caller_locations(1, 1).first
-      self.class.method_request_methods.fetch(caller_info.label.to_sym)
+      self.class.method_request_methods.fetch(extract_calling_method)
     end
 
     def query_params_for_method(method_name)
       self.class.method_query_params[method_name] || {}
+    end
+
+    def extract_calling_method
+      method_name = caller_locations(2)&.find do |m|
+        next unless m.label
+
+        self.class.end_point_method_names.include?(m.label.to_s.to_sym)
+      end
+      raise ArgumentError, "Cannot determine endpoint method name" if method_name.nil?
+
+      label = method_name.label
+      raise ArgumentError, "Cannot determine endpoint method name" if label.nil?
+
+      label.to_sym
     end
   end
 end
