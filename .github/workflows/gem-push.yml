@@ -1,7 +1,10 @@
 name: Ruby Gem
 
-on: workflow_dispatch
-
+on:
+  push:
+    tags:
+      - v*
+  workflow_dispatch:
 jobs:
   build:
     name: Build + Publish
@@ -9,22 +12,37 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Ruby 3.0
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.0
+      - uses: actions/checkout@v3
+      - name: Set up Ruby 3.0
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
 
-    - name: Publish to GPR
-      run: |
-        mkdir -p $HOME/.gem
-        touch $HOME/.gem/credentials
-        chmod 0600 $HOME/.gem/credentials
-        printf -- "---\n:github: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-        gem build *.gemspec
-        gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
-      env:
-        GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
-        OWNER: ${{ github.repository_owner }}
+      - name: Configure trusted publishing credentials
+        uses: rubygems/configure-rubygems-credentials@v1.0.0
+
+      - name: Bundle install
+        run: bundle install
+
+      - name: Run rake build task
+        run: bundle exec rake build
+
+      - name: Run rake guard_clean task
+        run: bundle exec rake release:guard_clean
+
+      - name: Run rake rubygem_push task
+        run: bundle exec rake release:rubygem_push
+
+      - name: Publish to GPR
+        run: |
+          mkdir -p $HOME/.gem
+          touch $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+          printf -- "---\n:github: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
+          gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
+        env:
+          GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
+          OWNER: ${{ github.repository_owner }}
