@@ -21,5 +21,7 @@ module TogglRb
     private
 
     def required_parameters: () -> untyped
+
+    def symbolize_keys: (Hash[String|Symbol, untyped]) -> Hash[Symbol, untyped]
   end
 end

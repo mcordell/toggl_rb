@@ -6,7 +6,7 @@ RSpec.describe TogglRb::Param do
       let(:built) { described_class.build("user_id", { type: Integer, other_args: %i[required] }) }
 
       it "creates a new Param instance with name, type, and other_attributes" do
-        expect(built.name).to eq("user_id")
+        expect(built.name).to eq(:user_id)
         expect(built.type).to eq(Integer)
         expect(built).to be_required
       end
