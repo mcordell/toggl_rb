@@ -1,0 +1,5 @@
+module TogglRb
+  module Core
+    def self.connection: () -> untyped
+  end
+end

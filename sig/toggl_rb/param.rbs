@@ -1,0 +1,21 @@
+module TogglRb
+  class Param
+    @name: Symbol
+
+    @type: untyped
+
+    @other_attributes: Array[untyped]
+
+    attr_reader name: Symbol
+
+    attr_reader type: untyped
+
+    attr_reader other_attributes: Array[untyped]  
+
+    def self.build: ((Symbol|String) name, Hash[Symbol, untyped] definition) -> Param
+
+    def initialize: ((Symbol|String) name, untyped type, ?Array[untyped] other_attributes) -> void
+
+    def required?: () -> bool
+  end
+end

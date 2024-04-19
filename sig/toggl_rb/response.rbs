@@ -1,0 +1,19 @@
+module TogglRb
+  class Response
+    @farady_response: untyped
+
+    @body_json: untyped
+
+    extend Forwardable
+
+    NEXT_ROW_NUMBER_HEADER: "x-next-row-number"
+
+    def initialize: (untyped farady_response) -> void
+
+    def body_json: () -> untyped
+
+    def more?: () -> untyped
+
+    def next_row_number: () -> untyped
+  end
+end
