@@ -1,0 +1,23 @@
+---
+- file: lib/toggl_rb/client.rb
+  diagnostics:
+  - range:
+      start:
+        line: 16
+        character: 25
+      end:
+        line: 16
+        character: 32
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Faraday`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 23
+        character: 28
+      end:
+        line: 23
+        character: 35
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Faraday`'
+    code: Ruby::UnknownConstant

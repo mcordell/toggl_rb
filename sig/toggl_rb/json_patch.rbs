@@ -1,0 +1,36 @@
+module TogglRb
+  class JSONPatch
+    @operations: untyped
+
+    # frozen_string_literal: true
+    class Operation
+      @type: untyped
+
+      @path: untyped
+
+      @value: untyped
+
+      attr_accessor type: untyped
+
+      attr_accessor path: untyped
+
+      attr_accessor value: untyped
+
+      def initialize: (untyped type, untyped path, untyped value) -> void
+
+      def to_h: () -> ::Hash[::String, untyped]
+    end
+
+    class Replace < Operation
+      def initialize: (?untyped? path, ?untyped? value) -> void
+    end
+
+    attr_reader operations: untyped
+
+    def initialize: (?untyped operations) -> void
+
+    def to_json: (*untyped _args) -> untyped
+
+    def replace: (untyped path, untyped value) -> self
+  end
+end

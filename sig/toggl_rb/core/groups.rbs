@@ -1,0 +1,16 @@
+module TogglRb
+  module Core
+    class Groups
+      include EndpointDSL
+      extend EndpointDSL::ClassMethods
+
+      def list: (organization_id: untyped, workspace_id: untyped) -> untyped
+
+      private
+
+      def send_request: (untyped request_method, untyped resource_path, ?untyped? body) -> untyped
+
+      def connection: () -> untyped
+    end
+  end
+end

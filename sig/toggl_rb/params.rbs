@@ -1,0 +1,25 @@
+module TogglRb
+  class Params
+    @definition: Hash[untyped, untyped]
+
+    attr_accessor request_params: Hash[untyped, untyped]
+
+    attr_accessor first_row_number: Integer
+
+    attr_reader definition: Hash[untyped, untyped]
+
+    def self.build: (Hash[String, Hash[untyped, untyped]] params_definition, Hash[untyped, untyped] request_params) -> void
+
+    def initialize: (?::Hash[String, Hash[untyped, untyped]] params_definition) -> void
+
+    def validate_required!: () -> (nil | untyped)
+
+    def to_json: (*untyped _args) -> untyped
+
+    def processed_params: () -> Hash[untyped, untyped]
+
+    private
+
+    def required_parameters: () -> untyped
+  end
+end

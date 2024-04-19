@@ -1,0 +1,22 @@
+module TogglRb
+  # Config class stores global configuration for the TogglRb gem
+  class Config
+    attr_accessor username: String
+
+    attr_accessor password: String
+
+    attr_accessor api_token: String
+
+    attr_writer debug_logging: bool
+
+    API_TOKEN_PASSWORD: "api_token"
+
+    def basic_auth?: () -> bool
+
+    def api_token?: () -> bool
+
+    def debug_logging: () -> bool
+
+    def debug_logging?: () -> bool
+  end
+end

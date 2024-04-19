@@ -1,0 +1,16 @@
+module TogglRb
+  module Reports
+    class Summary
+      include TogglRb::EndpointDSL
+      extend EndpointDSL::ClassMethods
+
+      def search_time_entries: (untyped workspace_id, ?::Hash[untyped, untyped] params) -> untyped
+
+      private
+
+      def send_request: (untyped request_method, untyped resource_path, untyped body) -> untyped
+
+      def connection: () -> untyped
+    end
+  end
+end

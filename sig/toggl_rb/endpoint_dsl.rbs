@@ -1,0 +1,63 @@
+module TogglRb
+  module EndpointDSL
+    def self.included: (untyped base) -> untyped
+
+    module ClassMethods
+      @current_params: untyped
+
+      @current_path: untyped
+
+      @current_method_type: untyped
+
+      @param_definitions: untyped
+
+      @method_query_params: untyped
+
+      @method_request_paths: untyped
+
+      @method_request_methods: untyped
+
+      @current_query_params: untyped
+
+      ALLOWED_METHOD_TYPES: ::Array[:post | :get | :put | :patch]
+
+      ALLOWED_PRETTY: untyped
+
+      def method_added: (untyped method_name) -> (nil | untyped)
+
+      def request_path: (untyped path) -> untyped
+
+      def request_method: (untyped method_type) -> untyped
+
+      def param_definitions: () -> Hash[Symbol, untyped]
+
+      def method_query_params: () -> Hash[Symbol, untyped]
+
+      def method_request_paths: () -> Hash[Symbol, untyped]
+
+      def method_request_methods: () -> Hash[Symbol, untyped]
+
+      def param: (Symbol name, (String | singleton(Integer) | singleton(String) | singleton(Date) | singleton(Time)) type, *untyped other_args) -> untyped
+
+      def query_param: (Symbol name, untyped type, *untyped other_args) -> untyped
+
+      def end_point_method_names: () -> Array[Symbol]
+    end
+
+    extend ClassMethods
+
+    def params_for_method: (untyped method_name) -> untyped
+
+    def build_params: (untyped request_params) -> untyped
+
+    def build_query_params: (untyped request_params) -> untyped
+
+    def request_path: () -> untyped
+
+    def request_method: () -> untyped
+
+    def query_params_for_method: (untyped method_name) -> untyped
+
+    def extract_calling_method: () -> Symbol
+  end
+end

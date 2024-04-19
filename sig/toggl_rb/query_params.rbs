@@ -1,0 +1,4 @@
+module TogglRb
+  class QueryParams < Params
+  end
+end

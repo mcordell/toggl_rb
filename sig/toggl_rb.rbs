@@ -1,4 +1,16 @@
 module TogglRb
-  VERSION: String
-  # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+  self.@config: TogglRb::Config
+
+  self.@client: TogglRb::Client
+
+  class Error < StandardError
+  end
+
+  def self.debug_logging?: () -> bool
+
+  def self.config: () -> TogglRb::Config
+
+  def self.client: () -> TogglRb::Client
+
+  def self.operation: (?Array[Hash[String, (String|Array[untyped])]] operations) -> TogglRb::JSONPatch
 end
