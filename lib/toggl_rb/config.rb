@@ -21,7 +21,7 @@ module TogglRb
 
     # @return [Boolean] whether to log debug messages
     def debug_logging
-      !!@debug_logging || ENV.fetch("TOGGL_RB_DEBUG_LOG", nil) || false
+      !!@debug_logging || !!ENV.fetch("TOGGL_RB_DEBUG_LOG", nil) || false
     end
 
     alias debug_logging? debug_logging
