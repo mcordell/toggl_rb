@@ -7,8 +7,6 @@ module TogglRb
 
       request_method :get
       request_path "workspaces/%<workspace_id>s/projects"
-      query_param :active, "Boolean"
-      query_param :since, "Boolean"
       query_param :active,	"boolean", description: "active"
       query_param :since,	Integer,
                   description: "Retrieve projects created/modified/deleted since this date using UNIX timestamp."
@@ -59,10 +57,11 @@ module TogglRb
       param :start_date, String, description: "Start date of the project timeframe."
       param :template, "Boolean", optional: true, description: "Whether the project is a template."
       param :template_id, "Integer", optional: true, description: "Template ID for the project."
-      def create(workspace_id, project_attributes)
+      # @param workspace_id [String] workspace id
+      def create(workspace_id, params)
         resource_path = format(request_path, workspace_id: workspace_id)
 
-        send_request(request_method, resource_path, project_attributes).body_json
+        send_request(request_method, resource_path, params).body_json
       end
 
       private

@@ -58,6 +58,8 @@ module TogglRb
 
     def query_params_for_method: (untyped method_name) -> untyped
 
+    private
+
     def extract_calling_method: () -> Symbol
   end
 end

@@ -89,6 +89,8 @@ module TogglRb
       self.class.method_query_params[method_name] || {}
     end
 
+    private
+
     def extract_calling_method
       method_name = caller_locations(2)&.find do |m|
         next unless m.label
