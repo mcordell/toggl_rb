@@ -1,0 +1,37 @@
+name: "Rubocop"
+
+on:
+  push:
+    branches: ["master"]
+
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: ["master"]
+
+jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
+      - name: Rubocop run
+        run: |
+          bash -c "
+            bundle exec rubocop --require code_scanning --format CodeScanning::SarifFormatter -o rubocop.sarif
+            [[ $? -ne 2 ]]
+          "
+
+      - name: Upload Sarif output
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: rubocop.sarif
