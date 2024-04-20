@@ -22,3 +22,7 @@ group :development do
   gem "steep", "~> 1.6", require: false
   gem "yard", "~> 0.9.36"
 end
+
+group :ci do
+  gem "code-scanning-rubocop", "~> 0.6.1"
+end
