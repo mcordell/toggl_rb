@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
-RSpec.describe "Reporting - V3 - Detailed Reporting", type: :feature do
+RSpec.describe "Reporting - V3 - Detailed Reporting" do
   before do
     TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil)
     @client = TogglRb::Reports::Summary.new

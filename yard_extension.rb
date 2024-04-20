@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 YARD::Logger.instance.show_progress = false
 
 class MyHandler < YARD::Handlers::Ruby::Base
@@ -18,15 +20,15 @@ class MyHandler < YARD::Handlers::Ruby::Base
       extra_state.endpoint_definition["request_path"] = statement.parameters.first[0].source
     when "param", "query_param"
       begin
-        extra_state.endpoint_definition[meth + "s"] ||= []
+        extra_state.endpoint_definition["#{meth}s"] ||= []
         doc = statement.parameters.jump(:assoc).parent.find do |x|
-          /description/ =~ x.source
-        end.children[1].source.gsub("\n", "").gsub("\\\"", "").gsub(/\s\s+/, "").gsub("\"", "")
+          x.source.include?("description")
+        end.children[1].source.delete("\n").gsub("\\\"", "").gsub(/\s\s+/, "").delete("\"")
         name = statement.parameters[0].first.first
         name = name.first until name.is_a? String
         type = statement.parameters[1].first.first
         type = type.first until type.is_a? String
-        extra_state.endpoint_definition[meth + "s"].push(
+        extra_state.endpoint_definition["#{meth}s"].push(
           {
             name: name,
             type: type,
@@ -98,7 +100,7 @@ class MyHandler2 < YARD::Handlers::Ruby::MethodHandler
     elsif mscope == :class && obj.docstring.blank? && %w[inherited included
                                                          extended method_added method_removed method_undefined].include?(meth)
       obj.add_tag(YARD::Tags::Tag.new(:private, nil))
-    elsif meth.to_s =~ /\?$/
+    elsif /\?$/.match?(meth.to_s)
       add_predicate_return_tag(obj)
     end
 
@@ -115,7 +117,7 @@ class MyHandler2 < YARD::Handlers::Ruby::MethodHandler
 
     info = obj.attr_info
     if info
-      if meth.to_s =~ /=$/ # writer
+      if /=$/.match?(meth.to_s) # writer
         info[:write] = obj if info[:read]
       elsif info[:write]
         info[:read] = obj

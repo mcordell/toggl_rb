@@ -1,4 +1,6 @@
-RSpec.describe "Core - V9 - Create a project", type: :feature do
+# frozen_string_literal: true
+
+RSpec.describe "Core - V9 - Create a project" do
   before do
     TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil)
     @client = TogglRb::Core::Projects.new

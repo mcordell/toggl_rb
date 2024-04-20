@@ -24,7 +24,7 @@ module TogglRb
     describe "initialization" do
       context "when authentication is not configured" do
         it "initializes core_connection and reports_connection without authentication" do
-          client = Client.new
+          client = described_class.new
 
           expect(client.core_connection.headers).not_to include("Authorization")
           expect(client.core_connection.headers).to include("Content-Type" => "application/json",
@@ -41,7 +41,7 @@ module TogglRb
         let(:password) { "pass" }
 
         it "initializes core_connection and reports_connection with basic auth" do
-          client = Client.new
+          client = described_class.new
 
           basic_auth_header = "Basic #{Base64.encode64("#{username}:#{password}").chomp}"
           expect(client.core_connection.headers).to include("Authorization" => basic_auth_header)
@@ -53,7 +53,7 @@ module TogglRb
         let(:api_token) { "RANDOM_STRING" }
 
         it "initializes core_connection and reports_connection with API token as basic auth" do
-          client = Client.new
+          client = described_class.new
 
           api_token_auth_header = "Basic #{Base64.encode64("#{api_token}:api_token").chomp}"
           expect(client.core_connection.headers).to include("Authorization" => api_token_auth_header)

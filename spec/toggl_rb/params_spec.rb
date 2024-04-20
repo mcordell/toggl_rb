@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe TogglRb::Params do
+  subject(:instance) { described_class.build(params_definition, request_params) }
+
   let(:request_params) { { "user_id" => 123, "name" => "John Doe" } }
   let(:params_definition) do
     {
@@ -8,7 +10,6 @@ RSpec.describe TogglRb::Params do
       "name" => { type: "string" }
     }
   end
-  subject(:instance) { described_class.build(params_definition, request_params) }
 
   describe ".build" do
     context "when passed a definition and request_params" do
@@ -22,6 +23,7 @@ RSpec.describe TogglRb::Params do
 
   describe "request_params=" do
     subject { instance.request_params = request_params }
+
     context "when passed a hash" do
       context "with string keys" do
         it "symbolizes the keys" do
@@ -68,6 +70,7 @@ RSpec.describe TogglRb::Params do
 
     context "with first_row_number set" do
       let(:first_row_number) { 10 }
+
       before { instance.first_row_number = first_row_number }
 
       it "includes first_row_number in the JSON output" do

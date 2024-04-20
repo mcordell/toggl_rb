@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-RSpec.describe "Core - V9 - Search For Project", type: :feature do
+RSpec.describe "Core - V9 - Search For Project" do
   before do
     TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil)
     @client = TogglRb::Core::Projects.new
   end
+
   let(:workspace_id) { ENV.fetch("TOGGL_WORKSPACE_ID", nil) }
 
   describe "GET api/v9/workspaces/{workspace_id}/projects" do

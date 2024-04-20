@@ -1,4 +1,6 @@
-RSpec.describe "Core - V9 - Create time entry", type: :feature do
+# frozen_string_literal: true
+
+RSpec.describe "Core - V9 - Create time entry" do
   before do
     TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil)
     @client = TogglRb::Core::TimeEntries.new

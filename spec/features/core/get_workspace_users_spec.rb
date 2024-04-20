@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "Core - V9 - Get Users in Workspace endpoint", type: :feature do
+RSpec.describe "Core - V9 - Get Users in Workspace endpoint" do
   before { TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil) }
 
   let(:workspace_id) { ENV.fetch("TOGGL_WORKSPACE_ID", nil) }
@@ -8,6 +8,7 @@ RSpec.describe "Core - V9 - Get Users in Workspace endpoint", type: :feature do
 
   describe "GET api/v9/workspaces/{workspace_id}/groups" do
     let(:client) { TogglRb::Core::Users.new }
+
     context "when passed an organization id and workspace id" do
       it "runs the operation successfully" do
         VCR.use_cassette("get_workspace_users_success") do
@@ -28,6 +29,7 @@ RSpec.describe "Core - V9 - Get Users in Workspace endpoint", type: :feature do
 
   describe "GET api/v9/organizations/{organization_id}/workspaces/{workspace_id}/groups" do
     let(:client) { TogglRb::Core::Groups.new }
+
     context "when passed an organization id and workspace id" do
       it "runs the operation successfully" do
         VCR.use_cassette("get_organization_workspace_users_success") do

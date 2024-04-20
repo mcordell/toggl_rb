@@ -25,7 +25,7 @@ RSpec.describe TogglRb::Response do
       "transfer-encoding" => "chunked" }
   end
   let(:faraday_response_double) do
-    instance_double("Faraday::Response", body: '{"key":"value"}', status: 200, headers: headers)
+    instance_double(Faraday::Response, body: '{"key":"value"}', status: 200, headers: headers)
   end
 
   let(:response) { described_class.new(faraday_response_double) }
