@@ -13,26 +13,8 @@ module TogglRb
     }.freeze
 
     def initialize
-      @core_connection = Faraday.new(URLS.dig(:core, :url)).tap do |fc|
-        fc.set_basic_auth(config.username, config.password) if config.basic_auth?
-        fc.set_basic_auth(config.api_token, TogglRb::Config::API_TOKEN_PASSWORD) if config.api_token?
-        fc.headers["Content-Type"] = "application/json"
-        fc.headers["Accept"] = "application/json"
-      end
-
-      @reports_connection = Faraday.new(URLS.dig(:reports, :url)).tap do |fc|
-        fc.set_basic_auth(config.username, config.password) if config.basic_auth?
-        fc.set_basic_auth(config.api_token, TogglRb::Config::API_TOKEN_PASSWORD) if config.api_token?
-        fc.headers["Content-Type"] = "application/json"
-        fc.headers["Accept"] = "application/json"
-      end
-    end
-
-    private
-
-    # @return [TogglRb::Config]
-    def config
-      TogglRb.config
+      @core_connection = Connection.new(URLS.dig(:core, :url))
+      @reports_connection = Connection.new(URLS.dig(:reports, :url))
     end
   end
 end
