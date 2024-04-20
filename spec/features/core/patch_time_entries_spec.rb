@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "Core - V9 - Bulk edit multiple time entries", type: :feature do
+RSpec.describe "Core - V9 - Bulk edit multiple time entries" do
   before do
     TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil)
     @client = TogglRb::Core::TimeEntries.new

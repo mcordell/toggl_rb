@@ -23,6 +23,7 @@ RSpec.describe TogglRb::Param do
 
   describe "#required?" do
     subject { instance.required? }
+
     context "when :required is included in other_attributes" do
       let(:instance) { described_class.new("user_id", "integer", [:required]) }
 

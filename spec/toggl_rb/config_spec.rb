@@ -8,13 +8,13 @@ module TogglRb
       subject(:debug_logging) { instance.debug_logging? }
 
       context "when TOGGL_RB_DEBUG_LOG variable is not set" do
-        it { is_expected.to eq false }
+        it { is_expected.to be false }
       end
 
       context "when TOGGL_RB_DEBUG_LOG is set to true" do
         before { allow(ENV).to receive(:fetch).with("TOGGL_RB_DEBUG_LOG", nil).and_return(true) }
 
-        it { is_expected.to eq true }
+        it { is_expected.to be true }
       end
     end
 

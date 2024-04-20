@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "Core - V9 - Get workspaces for me endpoint", type: :feature do
+RSpec.describe "Core - V9 - Get workspaces for me endpoint" do
   before do
     TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil)
     @client = TogglRb::Core::Me.new

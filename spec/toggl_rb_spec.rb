@@ -2,7 +2,7 @@
 
 RSpec.describe TogglRb do
   it "has a version number" do
-    expect(TogglRb::VERSION).not_to be nil
+    expect(TogglRb::VERSION).not_to be_nil
   end
 
   describe ".client" do
@@ -14,7 +14,7 @@ RSpec.describe TogglRb do
   describe ".operation" do
     context "when no operations are provided" do
       it "returns a JSONPatch instance with an empty operations array" do
-        json_patch_instance = TogglRb.operation
+        json_patch_instance = described_class.operation
         expect(json_patch_instance).to be_a(TogglRb::JSONPatch)
         expect(json_patch_instance.operations).to eq([])
       end
@@ -23,7 +23,7 @@ RSpec.describe TogglRb do
     context "when operations are provided" do
       it "returns a JSONPatch instance initialized with the provided operations" do
         operations = [TogglRb::JSONPatch::Replace.new("/biscuits/1/name", "Chocolate")]
-        json_patch_instance = TogglRb.operation(operations)
+        json_patch_instance = described_class.operation(operations)
 
         expect(json_patch_instance).to be_a(TogglRb::JSONPatch)
         expect(json_patch_instance.operations).to eq(operations)
