@@ -19,4 +19,5 @@ gem "simplecov-lcov", "~> 0.7.0", require: false
 group :development do
   gem "rbs", "~> 3.4", require: false
   gem "steep", "~> 1.6", require: false
+  gem "yard", "~> 0.9.36"
 end
