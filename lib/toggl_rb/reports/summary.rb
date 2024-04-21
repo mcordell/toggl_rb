@@ -4,6 +4,7 @@ module TogglRb
   module Reports
     class Summary
       include TogglRb::EndpointDSL
+      include RequestHelpers
 
       request_path "workspace/%<workspace_id>s/summary/time_entries"
       request_method :post
@@ -54,11 +55,6 @@ module TogglRb
       end
 
       private
-
-      def send_request(request_method, resource_path, body)
-        params = body.to_json unless body.is_a?(String)
-        TogglRb::Response.new(connection.send(request_method, resource_path, params))
-      end
 
       def connection
         TogglRb::Reports.connection

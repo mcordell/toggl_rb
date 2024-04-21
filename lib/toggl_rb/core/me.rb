@@ -6,6 +6,7 @@ module TogglRb
   module Core
     class Me
       include EndpointDSL
+      include RequestHelpers
 
       request_method :get
       request_path "me"
@@ -28,16 +29,6 @@ module TogglRb
       end
 
       private
-
-      def send_request(request_method, resource_path, body = nil)
-        rsp = if request_method == :get
-                connection.get(resource_path)
-              else
-                params = body.to_json unless body.is_a?(String)
-                connection.send(request_method, resource_path, params.to_json)
-              end
-        TogglRb::Response.new(rsp)
-      end
 
       def connection
         TogglRb::Core.connection

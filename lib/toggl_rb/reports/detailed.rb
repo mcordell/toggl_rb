@@ -6,6 +6,7 @@ module TogglRb
   module Reports
     class Detailed
       include TogglRb::EndpointDSL
+      include RequestHelpers
       # @param [String|Integer] workspace_id the toggl workspace id we are searching
       # @param [Hash] params the options for searching for time entries
       # @option params [Boolean]        :grouped              Whether time entries should be grouped, optional, default
@@ -67,11 +68,6 @@ module TogglRb
       end
 
       private
-
-      def send_request(request_method, resource_path, body)
-        params = body.to_json unless body.is_a?(String)
-        TogglRb::Response.new(connection.send(request_method, resource_path, params))
-      end
 
       def connection
         TogglRb::Reports.connection

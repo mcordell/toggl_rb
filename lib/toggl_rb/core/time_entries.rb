@@ -4,6 +4,7 @@ module TogglRb
   module Core
     class TimeEntries
       include EndpointDSL
+      include RequestHelpers
 
       request_method :post
       request_path "workspaces/%<workspace_id>s/time_entries"
@@ -47,11 +48,6 @@ module TogglRb
       end
 
       private
-
-      def send_request(request_method, resource_path, body)
-        params = body.to_json unless body.is_a?(String)
-        TogglRb::Response.new(connection.send(request_method, resource_path, params))
-      end
 
       def connection
         TogglRb::Core.connection

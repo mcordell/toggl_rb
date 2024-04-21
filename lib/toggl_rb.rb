@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "forwardable"
+require_relative "toggl_rb/request"
 require_relative "toggl_rb/endpoint_dsl"
 require_relative "toggl_rb/response"
 require_relative "toggl_rb/connection"
@@ -13,7 +14,6 @@ require_relative "toggl_rb/reports"
 require_relative "toggl_rb/core"
 require_relative "toggl_rb/version"
 require_relative "toggl_rb/json_patch"
-require_relative "toggl_rb/request"
 
 module TogglRb
   # A custom error class for the TogglRb module, inheriting from StandardError.
