@@ -2,6 +2,9 @@
 
 module TogglRb
   module RequestHelpers
+    # @param request_method [Symbol] HTTP request method, :get, :post, etc
+    # @param request_method [String] endpoint path on the API
+    # @param body [Mixed] the body or request params
     # @return [TogglRb::Response]
     def send_request(request_method, resource_path, body = nil)
       Request.send_request(
@@ -19,6 +22,11 @@ module TogglRb
   end
 
   class Request
+    # @param connection [TogglRb::Connection] API connection to use for this request
+    # @param request_method [Symbol] HTTP request method, :get, :post, etc
+    # @param request_method [String] endpoint path on the API
+    # @param body [Mixed] the body or request params
+    # @return [TogglRb::Response]
     def self.send_request(connection, request_method, resource_path, body = nil)
       new(connection).send_request(request_method, resource_path, body)
     end
@@ -28,6 +36,7 @@ module TogglRb
       @connection = connection
     end
 
+    # @return [TogglRb::Response] the response for this request
     def send_request(request_method, resource_path, body = nil)
       rsp = if body.nil?
               connection.send(request_method, resource_path)
@@ -42,6 +51,8 @@ module TogglRb
 
     private
 
+    # @!attribute [r] connection
+    #   @return [TogglRb::Connection] API connection used for making this request
     attr_reader :connection
   end
 end

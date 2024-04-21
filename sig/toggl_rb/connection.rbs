@@ -1,0 +1,49 @@
+module TogglRb
+  # Connection represents a connection to an API grouping on toggl's side (i.e.
+  # the core API or the reports API) this class is a thin wrapper around
+  # Faraday's connection
+  class Connection
+    @faraday_connection: untyped
+
+    extend Forwardable
+
+    def initialize: (String url) -> void
+
+    def setup_auth!: () -> Connection
+
+    def headers: () -> Hash[Symbol | String, untyped]
+
+    def get: 
+    () -> untyped |
+    (String | URI ?url) -> untyped |
+    (String | URI ?url, Hash[untyped, untyped] ?params) ->  untyped |
+    (String | URI ?url, Hash[untyped, untyped] ?params,  Hash[untyped, untyped] ?headers) ->  untyped
+
+    def put:
+    () -> untyped |
+    (String | URI ?url) -> untyped |
+    (String | URI ?url, Hash[untyped, untyped] ?params) ->  untyped |
+    (String | URI ?url, Hash[untyped, untyped] ?params,  Hash[untyped, untyped] ?headers) ->  untyped
+
+    def patch: 
+    () -> untyped |
+    (String | URI ?url) -> untyped |
+    (String | URI ?url, Hash[untyped, untyped] ?params) ->  untyped |
+    (String | URI ?url, Hash[untyped, untyped] ?params,  Hash[untyped, untyped] ?headers) ->  untyped
+
+    def post:
+    () -> untyped |
+    (String | URI ?url) -> untyped |
+    (String | URI ?url, Hash[untyped, untyped] ?params) ->  untyped |
+    (String | URI ?url, Hash[untyped, untyped] ?params,  Hash[untyped, untyped] ?headers) ->  untyped
+
+    private
+
+    def setup_connection!: () -> Connection
+
+    # @return [TogglRb::Config]
+    def config: () -> TogglRb::Config 
+
+    attr_reader faraday_connection: untyped
+  end
+end

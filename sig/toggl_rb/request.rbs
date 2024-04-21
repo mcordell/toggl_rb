@@ -1,0 +1,21 @@
+module TogglRb
+  module RequestHelpers
+    def send_request: (Symbol request_method, String resource_path, ?untyped? body) -> TogglRb::Response
+
+    def connection: () -> TogglRb::Connection
+  end
+
+  class Request
+    @connection: untyped
+
+    def self.send_request: (TogglRb::Connection connection, Symbol request_method, String resource_path, ?untyped? body) -> TogglRb::Response
+
+    def initialize: (TogglRb::Connection connection) -> void
+
+    def send_request: (Symbol request_method, String resource_path, ?untyped? body) -> TogglRb::Response
+
+    private
+
+    attr_reader connection: TogglRb::Connection
+  end
+end
