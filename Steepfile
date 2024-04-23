@@ -8,4 +8,5 @@ target :lib do
   library "uri" # Standard libraries
   library "forwardable" # Standard libraries
   library "json" # Standard libraries
+  library "logger"
 end

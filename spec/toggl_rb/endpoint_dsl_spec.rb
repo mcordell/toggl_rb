@@ -22,9 +22,15 @@ class MockEndpoint
 end
 
 RSpec.describe TogglRb::EndpointDSL do
-  # Expanded Mock class to include multiple endpoint definitions
-
   let(:mock_endpoint) { MockEndpoint.new }
+
+  describe ".request_method" do
+    context "when passed an unknown request method" do
+      it "raises an ArgumentError" do
+        expect { MockEndpoint.class_eval { request_method :horse } }.to raise_error(ArgumentError)
+      end
+    end
+  end
 
   describe "DSL definitions" do
     it "associates request path, method, and params with the correct endpoint method" do

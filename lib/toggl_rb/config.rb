@@ -11,9 +11,11 @@ module TogglRb
     #   @return [String, nil] the API token for Toggl API access, used for token-based authentication
     attr_accessor :username, :password, :api_token
 
+    # @!attribute [w] logger
+    #   @return [Logger] the logger for Toggl Requests
     # @!attribute [w] debug_logging
     #   @return [void] sets whether debugging messages should be logged
-    attr_writer :debug_logging
+    attr_writer :debug_logging, :logger
 
     # Constant used to represent the password when using API token authentication.
     API_TOKEN_PASSWORD = "api_token"
@@ -34,6 +36,11 @@ module TogglRb
     # @return [Boolean] true if debugging is enabled, otherwise false.
     def debug_logging
       !!@debug_logging || !!ENV.fetch("TOGGL_RB_DEBUG_LOG", nil) || false
+    end
+
+    # @return [Logger]
+    def logger
+      @logger || Logger.new($stdout)
     end
 
     # Alias for the debug_logging method to query debug logging status.
