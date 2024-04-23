@@ -13,7 +13,7 @@ module TogglRb
       #                                                       false.
       # @option params [Boolean]        :hide_amounts         Whether amounts should be hidden, optional, default false.
       # @option params [Integer]        :max_duration_seconds Max duration seconds, optional, filtering attribute.
-      #                                                       Time Audit only, should be greater than MinDurationSeconds.
+      #                                                       Time Audit only, should be greater than MinDurationSeconds
       # @option params [Integer]        :min_duration_seconds Min duration seconds, optional, filtering attribute.
       #                                                       Time Audit only, should be less than MaxDurationSeconds.
       # @option params [String]         :order_by             Order by field, optional, default "date". Can
@@ -52,19 +52,9 @@ module TogglRb
         params_object.validate_required!
         resource_path = format(request_path, workspace_id: workspace_id)
         response = send_request(request_method, resource_path, params_object)
-        get_all = request_options.fetch(:get_all, false)
+        return response.body_json unless request_options.fetch(:get_all, false)
 
-        return response.body_json unless get_all
-
-        all_tasks = response.body_json
-
-        while response.more?
-          params_object.first_row_number = response.next_row_number
-          response = send_request(request_method, resource_path, params_object)
-          all_tasks += response.body_json
-        end
-
-        all_tasks
+        request_all(response)
       end
 
       private

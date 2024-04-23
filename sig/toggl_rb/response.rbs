@@ -15,5 +15,9 @@ module TogglRb
     def more?: () -> untyped
 
     def next_row_number: () -> untyped
+
+    attr_accessor request: TogglRb::Request
+
+    def next_page_request: () -> TogglRb::Request
   end
 end

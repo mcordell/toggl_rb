@@ -6,6 +6,8 @@ module TogglRb
     attr_accessor password: String
 
     attr_accessor api_token: String
+    
+    attr_accessor logger: Logger
 
     attr_writer debug_logging: bool
 

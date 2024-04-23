@@ -3,6 +3,8 @@ module TogglRb
     def send_request: (Symbol request_method, String resource_path, ?untyped? body) -> TogglRb::Response
 
     def connection: () -> TogglRb::Connection
+
+    def request_all: (TogglRb::Response response) -> untyped
   end
 
   class Request
@@ -12,9 +14,21 @@ module TogglRb
 
     def initialize: (TogglRb::Connection connection) -> void
 
+    def execute: () -> TogglRb::Response
+
     def send_request: (Symbol request_method, String resource_path, ?untyped? body) -> TogglRb::Response
 
+    attr_accessor params: (TogglRb::Params | TogglRb::JSONPatch)
+
+    attr_accessor request_method: Symbol
+
+    attr_accessor resource_path: String
+
     private
+
+    def build_params: (TogglRb::Params | TogglRb::JSONPatch | Hash[untyped, untyped]  | nil) -> (TogglRb::Params | TogglRb::JSONPatch)
+
+    def log_request: () -> void
 
     attr_reader connection: TogglRb::Connection
   end

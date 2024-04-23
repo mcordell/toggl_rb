@@ -6,6 +6,10 @@ module TogglRb
   class Response
     extend Forwardable
 
+    # @!attribute [rw]
+    #   @return [TogglRb::Request] request corresponding to this response
+    attr_accessor(:request)
+
     # The HTTP header key used to fetch the next row number for paginated responses.
     NEXT_ROW_NUMBER_HEADER = "x-next-row-number"
 
@@ -31,6 +35,14 @@ module TogglRb
     # @return [String, nil] the next row number, or nil if not present
     def next_row_number
       @faraday_response.headers[NEXT_ROW_NUMBER_HEADER]
+    end
+
+    # @return [TogglRb::Request] request for the next page of results
+    def next_page_request
+      raise TogglRb::Error, "Request not pagninatable" unless request.params.is_a?(Params)
+
+      request.params.first_row_number = next_row_number
+      request
     end
 
     # Delegates the status method call directly to the Faraday response object.

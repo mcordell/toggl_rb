@@ -20,6 +20,34 @@ module TogglRb
     end
 
     describe "#send_request" do
+      context "when body is an invalid type" do
+        it "raises an Argument Error" do
+          expect do
+            request_instance.send_request(:post, "/test", 12)
+          end.to raise_error(ArgumentError, "Unknown body type 12")
+        end
+      end
+
+      context "when logging is enabled" do
+        let(:logger_output) { StringIO.new }
+
+        around do |ex|
+          old_val = TogglRb.config.debug_logging
+          old_logger = TogglRb.config.logger
+          TogglRb.config.debug_logging = true
+          TogglRb.config.logger = Logger.new(logger_output)
+          ex.run
+          TogglRb.config.debug_logging = old_val
+          TogglRb.config.logger = old_logger
+        end
+
+        it "logs the request" do
+          allow(connection).to receive(:send).with(:get, "/test").and_return(response)
+          request_instance.send_request(:get, "/test")
+          expect(logger_output.string).to match(%r{.*INFO.*GET /test\n})
+        end
+      end
+
       context "when no body is provided" do
         it "sends a GET request without a body" do
           allow(connection).to receive(:send).with(:get, "/test").and_return(response)

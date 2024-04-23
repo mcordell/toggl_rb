@@ -2,6 +2,9 @@
 
 module TogglRb
   module Reports
+    # The Summary Reports API provides an aggregation of time entries data,
+    # giving you an overview of total tracked time divided into different
+    # categories.
     class Summary
       include TogglRb::EndpointDSL
       include RequestHelpers
@@ -39,19 +42,9 @@ module TogglRb
         resource_path = format(request_path, workspace_id: workspace_id)
         response = send_request(request_method, resource_path, params_object)
         request_options = params.fetch(:request_options, {})
-        get_all = request_options.fetch(:get_all, false)
+        return response.body_json unless request_options.fetch(:get_all, false)
 
-        return response.body_json unless get_all
-
-        all_tasks = response.body_json
-
-        while response.more?
-          params_object.first_row_number = response.next_row_number
-          response = send_request(request_method, resource_path, params_object)
-          all_tasks += response.body_json
-        end
-
-        all_tasks
+        request_all(response)
       end
 
       private
