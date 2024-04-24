@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "Core - V9 - Get me endpoint" do
-  before do
-    TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil)
-  end
-
+RSpec.describe "Core - V9 - Get me endpoint", type: :feature do
   let(:api) { TogglRb::Core::Me.new }
 
   let(:user_attributes) do
@@ -18,7 +14,6 @@ RSpec.describe "Core - V9 - Get me endpoint" do
 
   describe "PUT /me" do
     context "when updating user settings" do
-      # rubocop:disable RSpec/ExampleLength
       it "successfully updates the user settings" do
         VCR.use_cassette("update_user_settings_success") do
           response = api.update(user_attributes)

@@ -1,17 +1,12 @@
 # frozen_string_literal: true
 
-RSpec.describe "Core - V9 - Search For Project" do
-  before do
-    TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil)
-    @client = TogglRb::Core::Projects.new
-  end
-
-  let(:workspace_id) { ENV.fetch("TOGGL_WORKSPACE_ID", nil) }
+RSpec.describe "Core - V9 - Search For Project", type: :feature do
+  let(:api) { TogglRb::Core::Projects.new }
 
   describe "GET api/v9/workspaces/{workspace_id}/projects" do
     it "runs the operation successfully" do
       VCR.use_cassette("search_projects_no_filter") do
-        response = @client.search(workspace_id)
+        response = api.search(workspace_id)
 
         expect(response.body_json).to match(
           [{ "active" => true,
@@ -79,7 +74,7 @@ RSpec.describe "Core - V9 - Search For Project" do
     context "searching by name param" do
       it "runs the operation successfully" do
         VCR.use_cassette("search_project_by_name") do
-          response = @client.search(workspace_id, name: "A project")
+          response = api.search(workspace_id, name: "A project")
           expect(response.body_json.count).to eq 1
 
           expect(response.body_json[0]["name"]).to eq "A project"

@@ -1,16 +1,13 @@
 # frozen_string_literal: true
 
-RSpec.describe "Core - V9 - Get workspaces for me endpoint" do
-  before do
-    TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil)
-    @client = TogglRb::Core::Me.new
-  end
+RSpec.describe "Core - V9 - Get workspaces for me endpoint", type: :feature do
+  let(:api) { TogglRb::Core::Me.new }
 
   describe "GET api/v9/me/workspaces" do
     context "when the related data variable is not toggled" do
       it "runs the operation successfully" do
         VCR.use_cassette("get_me_workspaces_success") do
-          response = @client.workspaces
+          response = api.workspaces
 
           expect(response).to match(
             [{ "admin" => true,

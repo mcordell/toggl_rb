@@ -1,12 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe "Core - V9 - Create a project" do
-  before do
-    TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil)
-    @client = TogglRb::Core::Projects.new
-  end
+RSpec.describe "Core - V9 - Create a project", type: :feature do
+  let(:api) { TogglRb::Core::Projects.new }
 
-  let(:workspace_id) { ENV.fetch("TOGGL_WORKSPACE_ID", nil) }
   let(:description) { "Created project via API" }
   let(:project_attributes) do
     {
@@ -18,7 +14,7 @@ RSpec.describe "Core - V9 - Create a project" do
     context "when creating a new project" do
       it "successfully creates a project" do
         VCR.use_cassette("create_project_success") do
-          response = @client.create(workspace_id, project_attributes)
+          response = api.create(workspace_id, project_attributes)
 
           expect(response).to match(
             { "id" => 201_991_297,

@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "Core - V9 - Get time entries for 'me'" do
-  before { TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil) }
-
-  let(:workspace_id) { ENV.fetch("TOGGL_WORKSPACE_ID", nil) }
-  let(:organization_id) { ENV.fetch("TOGGL_ORGANIZATION_ID", nil) }
-
+RSpec.describe "Core - V9 - Get time entries for 'me'", type: :feature do
   describe "GET api/v9/me/time_entries" do
     let(:api) { TogglRb::Core::TimeEntries.new }
 

@@ -1,12 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe "Reporting - V3 - Detailed Reporting" do
-  before do
-    TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil)
-  end
-
+RSpec.describe "Reporting - V3 - Detailed Reporting", type: :feature do
   let(:client) { TogglRb::Reports::Detailed.new }
-  let(:workspace_id) { ENV.fetch("TOGGL_WORKSPACE_ID", nil) }
 
   describe "POST /reports/api/v3/workspace/WID/search/time_entries/" do
     context "when valid parameters are provided" do

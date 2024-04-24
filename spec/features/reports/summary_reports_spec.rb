@@ -1,22 +1,15 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
-RSpec.describe "Reporting - V3 - Detailed Reporting" do
-  before do
-    TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil)
-    @client = TogglRb::Reports::Summary.new
-  end
-
-  let(:workspace_id) { ENV.fetch("TOGGL_WORKSPACE_ID", nil) }
+RSpec.describe "Reporting - V3 - Detailed Reporting", type: :feature do
+  let(:api) { TogglRb::Reports::Summary.new }
 
   describe "POST /reports/api/v3/workspace/WID/search/time_entries/" do
     context "when valid parameters are provided" do
       it "returns an array of time entry hashes" do
         VCR.use_cassette("serach_summary_time_entries_success") do
-          response = @client.search_time_entries(workspace_id,
-                                                 start_date: "2024-04-01",
-                                                 end_date: "2024-04-15", grouping: "projects")
+          response = api.search_time_entries(workspace_id,
+                                             start_date: "2024-04-01",
+                                             end_date: "2024-04-15", grouping: "projects")
 
           expect(response).to match(
             { "groups" =>

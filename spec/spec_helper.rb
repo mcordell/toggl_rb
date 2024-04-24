@@ -31,12 +31,23 @@ VCR.configure do |config|
   config.filter_sensitive_data("<TOGGL_ORGANIZATION_ID>") { ENV.fetch("TOGGL_ORGANIZATION_ID", nil) }
 end
 
+RSpec.shared_context "with setup api auth" do
+  before do
+    TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil)
+  end
+
+  let(:workspace_id) { ENV.fetch("TOGGL_WORKSPACE_ID", nil) }
+  let(:organization_id) { ENV.fetch("TOGGL_ORGANIZATION_ID", nil) }
+end
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
 
   # Disable RSpec exposing methods globally on `Module` and `main`
   config.disable_monkey_patching!
+
+  config.include_context "with setup api auth", type: :feature
 
   config.expect_with :rspec do |c|
     c.syntax = :expect

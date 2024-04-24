@@ -1,12 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe "Core - V9 - Create time entry" do
-  before do
-    TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil)
-    @client = TogglRb::Core::TimeEntries.new
-  end
+RSpec.describe "Core - V9 - Create time entry", type: :feature do
+  let(:api) {  TogglRb::Core::TimeEntries.new }
 
-  let(:workspace_id) { ENV.fetch("TOGGL_WORKSPACE_ID", nil) }
   let(:description) { "CREATE time entry" }
   let(:start_time) do
     DateTime.new(2024, 4, 10, 8, 0, 0)
@@ -27,7 +23,7 @@ RSpec.describe "Core - V9 - Create time entry" do
     context "when creating a new time entry" do
       it "successfully creates a time entry" do
         VCR.use_cassette("create_time_entry_success") do
-          response = @client.create(workspace_id, time_entry_attributes)
+          response = api.create(workspace_id, time_entry_attributes)
 
           expect(response).to match(
             "at" => "2024-04-12T15:26:15+00:00",

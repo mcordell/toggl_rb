@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "Core - V9 - Get Users in Workspace endpoint" do
-  before { TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil) }
-
-  let(:workspace_id) { ENV.fetch("TOGGL_WORKSPACE_ID", nil) }
-  let(:organization_id) { ENV.fetch("TOGGL_ORGANIZATION_ID", nil) }
-
+RSpec.describe "Core - V9 - Get Users in Workspace endpoint", type: :feature do
   describe "GET api/v9/workspaces/{workspace_id}/groups" do
     let(:client) { TogglRb::Core::Users.new }
 
