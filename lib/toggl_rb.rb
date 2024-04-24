@@ -14,6 +14,7 @@ require_relative "toggl_rb/reports"
 require_relative "toggl_rb/core"
 require_relative "toggl_rb/version"
 require_relative "toggl_rb/json_patch"
+require_relative "toggl_rb/workspace"
 
 module TogglRb
   # A custom error class for the TogglRb module, inheriting from StandardError.

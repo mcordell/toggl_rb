@@ -1,0 +1,22 @@
+
+module TogglRb
+  class Workspace
+    def initialize: (Integer id) -> void
+
+    def load_attributes!: () -> TogglRb::Workspace
+
+    def set_attributes: (::Hash[untyped, untyped] attrs) -> TogglRb::Workspace
+
+    attr_reader id: Integer
+    API_ATTRIBUTES: ::Array[:admin | :api_token | :at | :business_ws |
+    :csv_upload | :default_currency | :default_hourly_rate |
+    :hide_start_end_times | :ical_enabled | :ical_url | :last_modified |
+    :logo_url | :name | :only_admins_may_create_projects |
+    :only_admins_may_create_tags | :only_admins_see_billable_rates |
+    :only_admins_see_team_dashboard | :organization_id | :permissions |
+    :premium | :profile | :projects_billable_by_default |
+    :projects_private_by_default | :rate_last_updated | :reports_collapse |
+    :role | :rounding | :rounding_minutes | :server_deleted_at | :subscription
+    | :suspended_at | :working_hours_in_minutes]
+  end
+end
