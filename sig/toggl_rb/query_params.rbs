@@ -1,4 +1,5 @@
 module TogglRb
   class QueryParams < Params
+    def build_url: (String base_path) -> String
   end
 end
