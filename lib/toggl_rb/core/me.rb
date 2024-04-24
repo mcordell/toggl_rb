@@ -17,6 +17,21 @@ module TogglRb
         send_request(request_method, resource_path).body_json
       end
 
+      request_method :put
+      request_path "me"
+
+      param :beginning_of_week, Integer, description: "User's first day of the week. Sunday: 0, Monday: 1, etc."
+      param :country_id, Integer, description: "User's country ID"
+      param :current_password, String, description: "User's current password (used to change the current password)"
+      param :default_workspace_id, Integer, description: "User's default workspace ID"
+      param :email, String, description: "User's email address"
+      param :fullname, String, description: "User's full name"
+      param :password, String, description: "User's new password (current one must also be provided)"
+      param :timezone, String, description: "User's timezone"
+      def update(params)
+        send_request(request_method, request_path, build_params(params)).body_json
+      end
+
       request_method :get
       request_path "me/workspaces"
       query_param :since, Date,
