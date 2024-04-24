@@ -1,16 +1,13 @@
 # frozen_string_literal: true
 
-RSpec.describe "Core - V9 - Get me endpoint" do
-  before do
-    TogglRb.config.api_token = ENV.fetch("TOGGL_API_TOKEN", nil)
-    @client = TogglRb::Core::Me.new
-  end
+RSpec.describe "Core - V9 - Get me endpoint", type: :feature do
+  let(:api) { TogglRb::Core::Me.new }
 
   describe "GET api/v9/me" do
     context "when the related data variable is not toggled" do
       it "runs the operation successfully" do
         VCR.use_cassette("get_me_success_short") do
-          response = @client.get
+          response = api.get
 
           expect(response).to match(
             {
@@ -41,7 +38,7 @@ RSpec.describe "Core - V9 - Get me endpoint" do
     context "when the related data variable is toggled" do
       it "runs the operation successfully" do
         VCR.use_cassette("get_me_success_long") do
-          response = @client.get(with_related_data: true)
+          response = api.get(with_related_data: true)
 
           expect(response).to match(
             {
