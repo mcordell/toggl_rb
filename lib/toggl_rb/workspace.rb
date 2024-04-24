@@ -4,7 +4,7 @@ module TogglRb
   # A workspace object corresponds to the a Toggl workspace. This is an entry
   # point for many API endpoints since many methods require a workspace ID
   class Workspace
-    # @!attribute [r] :id
+    # @!attribute [r] id
     #   @return [Integer] the workspace's ID
     attr_reader :id
 
