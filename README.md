@@ -20,22 +20,34 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 Currently TogglRb only supports a select subset of endpoints:
 
-| Group       | Endpoint                                                                                                               | Status |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------- | :----: |
-| Me          | [GET Me](https://engineering.toggl.com/docs/api/me/index.html#get-me)                                                  |   ✔️   |
-| Me          | [GET Workspaces](https://engineering.toggl.com/docs/api/me/index.html#get-workspaces)                                  |   ✔️   |
-| Groups      | [GET List of groups in a workspace within an organization with user assignments][group-doc]                            |   ✔️   |
-| Projects    | [GET WorkspaceProjects](https://engineering.toggl.com/docs/api/projects#get-workspaceprojects)                         |   ✔️   |
-| Projects    | [POST WorkspaceProjects](https://engineering.toggl.com/docs/api/projects#post-workspaceprojects)                       |   ✔️   |
-| Users       | [GET List of users who belong to the given workspace](workspace-users-doc)                                             |   ✔️   |
-| TimeEntries | [GET TimeEntries](https://engineering.toggl.com/docs/api/time_entries#get-timeentries)                                 |   🔲   |
-| TimeEntries | [GET Get current time entry](https://engineering.toggl.com/docs/api/time_entries#get-get-current-time-entry)           |   🔲   |
-| TimeEntries | [GET Get a time entry by ID](https://engineering.toggl.com/docs/api/time_entries#get-get-a-time-entry-by-id)           |   🔲   |
-| TimeEntries | [POST TimeEntries](https://engineering.toggl.com/docs/api/time_entries#post-timeentries)                               |   ✔️   |
-| TimeEntries | [PATCH Bulk editing time entries](https://engineering.toggl.com/docs/api/time_entries#patch-bulk-editing-time-entries) |   ✔️   |
-| TimeEntries | [PUT TimeEntries](https://engineering.toggl.com/docs/api/time_entries#put-timeentries)                                 |   🔲   |
-| TimeEntries | [DELETE TimeEntries](https://engineering.toggl.com/docs/api/time_entries#delete-timeentries)                           |   🔲   |
-| TimeEntries | [PATCH Stop TimeEntry](https://engineering.toggl.com/docs/api/time_entries#patch-stop-timeentry)                       |   🔲   |
+| Group       | Endpoint                                                                                                                                  | Status |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------- | :----: |
+| Me          | [GET Me](https://engineering.toggl.com/docs/api/me/index.html#get-me)                                                                     |   ✔️   |
+| Me          | [PUT Me](https://engineering.toggl.com/docs/api/me/index.html#put-me)                                                                     |   ✔️   |
+| Me          | [GET Clients](https://engineering.toggl.com/docs/api/me/index.html#get-clients)                                                           |   🔲   |
+| Me          | [GET Features](https://engineering.toggl.com/docs/api/me/index.html#get-features)                                                         |   🔲   |
+| Me          | [GET User's last known location](https://engineering.toggl.com/docs/api/me/index.html#get-users-last-known-location)                      |   🔲   |
+| Me          | [GET Logged](https://engineering.toggl.com/docs/api/me/index.html#get-logged)                                                             |   🔲   |
+| Me          | [GET Organizations that a user is part of](https://engineering.toggl.com/docs/api/me/index.html#get-organizations-that-a-user-is-part-of) |   🔲   |
+| Me          | [GET Projects](https://engineering.toggl.com/docs/api/me/index.html#get-projects)                                                         |   🔲   |
+| Me          | [GET ProjectsPaginated](https://engineering.toggl.com/docs/api/me/index.html#get-projectspaginated)                                       |   🔲   |
+| Me          | [GET Tags](https://engineering.toggl.com/docs/api/me/index.html#get-tags)                                                                 |   🔲   |
+| Me          | [GET Tasks](https://engineering.toggl.com/docs/api/me/index.html#get-tasks)                                                               |   🔲   |
+| Me          | [GET TrackReminders](https://engineering.toggl.com/docs/api/me/index.html#get-trackreminders)                                             |   🔲   |
+| Me          | [GET WebTimer](https://engineering.toggl.com/docs/api/me/index.html#get-webtimer)                                                         |   🔲   |
+| Me          | [GET Workspaces](https://engineering.toggl.com/docs/api/me/index.html#get-workspaces)                                                     |   🔲   |
+| Groups      | [GET List of groups in a workspace within an organization with user assignments][group-doc]                                               |   ✔️   |
+| Projects    | [GET WorkspaceProjects](https://engineering.toggl.com/docs/api/projects#get-workspaceprojects)                                            |   ✔️   |
+| Projects    | [POST WorkspaceProjects](https://engineering.toggl.com/docs/api/projects#post-workspaceprojects)                                          |   ✔️   |
+| Users       | [GET List of users who belong to the given workspace](workspace-users-doc)                                                                |   ✔️   |
+| TimeEntries | [GET TimeEntries](https://engineering.toggl.com/docs/api/time_entries#get-timeentries)                                                    |   🔲   |
+| TimeEntries | [GET Get current time entry](https://engineering.toggl.com/docs/api/time_entries#get-get-current-time-entry)                              |   🔲   |
+| TimeEntries | [GET Get a time entry by ID](https://engineering.toggl.com/docs/api/time_entries#get-get-a-time-entry-by-id)                              |   🔲   |
+| TimeEntries | [POST TimeEntries](https://engineering.toggl.com/docs/api/time_entries#post-timeentries)                                                  |   ✔️   |
+| TimeEntries | [PATCH Bulk editing time entries](https://engineering.toggl.com/docs/api/time_entries#patch-bulk-editing-time-entries)                    |   ✔️   |
+| TimeEntries | [PUT TimeEntries](https://engineering.toggl.com/docs/api/time_entries#put-timeentries)                                                    |   🔲   |
+| TimeEntries | [DELETE TimeEntries](https://engineering.toggl.com/docs/api/time_entries#delete-timeentries)                                              |   🔲   |
+| TimeEntries | [PATCH Stop TimeEntry](https://engineering.toggl.com/docs/api/time_entries#patch-stop-timeentry)                                          |   🔲   |
 
 On The Reporting Endpoints
 
