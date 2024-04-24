@@ -1,0 +1,15 @@
+module TogglRb
+  module Core
+    class Workspaces
+      include TogglRb::EndpointDSL
+      extend EndpointDSL::ClassMethods
+      include TogglRb::RequestHelpers
+
+      def get: (String | Integer workspace_id) -> Hash[String, untyped]
+
+      private
+
+      def connection: () -> TogglRb::Connection
+    end
+  end
+end

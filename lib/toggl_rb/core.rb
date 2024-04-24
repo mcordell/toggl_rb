@@ -7,6 +7,7 @@ module TogglRb
     require_relative "core/time_entries"
     require_relative "core/users"
     require_relative "core/me"
+    require_relative "core/workspaces"
 
     def self.connection
       TogglRb.client.core_connection
