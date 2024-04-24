@@ -6,7 +6,7 @@ module TogglRb
   class Response
     extend Forwardable
 
-    # @!attribute [rw]
+    # @!attribute [rw] request
     #   @return [TogglRb::Request] request corresponding to this response
     attr_accessor(:request)
 

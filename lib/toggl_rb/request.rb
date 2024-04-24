@@ -67,8 +67,8 @@ module TogglRb
       send_request(request_method, resource_path, params)
     end
 
-    # @param request_method [Symbol] HTTP request method, :get, :post, etc
-    # @param resource_path [String] endpoint path on the API
+    # @param req_method [Symbol] HTTP request method, :get, :post, etc
+    # @param path [String] endpoint path on the API
     # @param body [Mixed] the body or request params
     # @return [TogglRb::Response] the response for this request
     # rubocop:disable Metrics/MethodLength
