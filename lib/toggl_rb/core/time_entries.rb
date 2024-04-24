@@ -2,9 +2,31 @@
 
 module TogglRb
   module Core
+    # Time Entries endpoint
+    # @see https://engineering.toggl.com/docs/api/time_entries
     class TimeEntries
       include EndpointDSL
       include RequestHelpers
+
+      request_method :get
+      request_path "me/time_entries"
+      query_param :since, Integer,
+                  description: "Get entries modified since this date using UNIX timestamp, including deleted ones."
+      query_param :before, String,
+                  description: "Get entries with start time, before given date (YYYY-MM-DD) or with time in " \
+                               "RFC3339 format."
+      query_param :start_date, String,
+                  description: "Get entries with start time, from start_date YYYY-MM-DD or with time in RFC3339 " \
+                               "format. To be used with end_date."
+      query_param :end_date, String,
+                  description: "Get entries with start time, until end_date YYYY-MM-DD or with time in RFC3339 " \
+                               "format. To be used with start_date."
+      query_param :meta, "boolean", description: "Should the response contain data for meta entities"
+      query_param :include_sharing, "boolean", description: "Include sharing details in the response"
+      def list(query_params = {})
+        resource_path = build_query_params(query_params).build_url(request_path)
+        send_request(request_method, resource_path).body_json
+      end
 
       request_method :post
       request_path "workspaces/%<workspace_id>s/time_entries"
