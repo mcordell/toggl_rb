@@ -28,6 +28,15 @@ module TogglRb
         send_request(request_method, resource_path).body_json
       end
 
+      request_method :get
+      request_path "me/time_entries/%<time_entry_id>s"
+      query_param :meta, "boolean", description: "Should the response contain data for meta entities"
+      query_param :include_sharing, "boolean", description: "Include sharing details in the response"
+      def get(time_entry_id, query_params = {})
+        resource_path = format(request_path, time_entry_id: time_entry_id)
+        resource_path = build_query_params(query_params).build_url(resource_path)
+        send_request(request_method, resource_path).body_json
+      end
 
       request_method :get
       request_path "me/time_entries/current"
