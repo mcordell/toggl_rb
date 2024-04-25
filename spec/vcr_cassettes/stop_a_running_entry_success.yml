@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: https://api.track.toggl.com/api/v9/workspaces/<TOGGL_WORKSPACE_ID>/time_entries/3421446028/stop
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.9.0
+      Authorization:
+      - Basic <TOGGL_BASIC_AUTH>
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Thu, 25 Apr 2024 03:28:07 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '366'
+      cache-control:
+      - no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0
+      x-toggl-request-id:
+      - a63258db-1a08-4946-98da-121eceaa1e85
+      x-service-level:
+      - GREEN
+      instance:
+      - track-public-api-proxy-f666f86df-ng2v4
+      strict-transport-security:
+      - max-age=15552000; includeSubDomains
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-we-are-hiring:
+      - https://toggl.com/jobs/
+      x-request-id:
+      - f8d7cbc47aa4c37f6ac296c3f7b62664
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      via:
+      - 1.1 google
+      alt-svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: '{"id":3421446028,"workspace_id":<TOGGL_WORKSPACE_ID>,"project_id":null,"task_id":null,"billable":false,"start":"2024-04-25T03:21:13Z","stop":"2024-04-25T03:28:07Z","duration":414,"description":"Time
+        entry running!!","tags":[],"tag_ids":[],"duronly":true,"at":"2024-04-25T03:28:07+00:00","server_deleted_at":null,"user_id":10658406,"uid":10658406,"wid":<TOGGL_WORKSPACE_ID>,"permissions":null}'
+  recorded_at: Thu, 25 Apr 2024 03:28:07 GMT
+recorded_with: VCR 6.2.0

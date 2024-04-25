@@ -44,6 +44,13 @@ module TogglRb
         send_request(request_method, request_path).body_json
       end
 
+      request_method :patch
+      request_path "workspaces/%<workspace_id>s/time_entries/%<time_entry_id>s/stop"
+      def stop(workspace_id, time_entry_id)
+        resource_path = format(request_path, time_entry_id: time_entry_id, workspace_id: workspace_id)
+        send_request(request_method, resource_path).body_json
+      end
+
       request_method :post
       request_path "workspaces/%<workspace_id>s/time_entries"
       param :billable, "Boolean", optional: true, default: false,
@@ -93,4 +100,3 @@ module TogglRb
     end
   end
 end
-
