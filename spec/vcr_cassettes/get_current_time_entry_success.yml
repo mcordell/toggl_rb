@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.track.toggl.com/api/v9/me/time_entries/current
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.9.0
+      Authorization:
+      - Basic <TOGGL_BASIC_AUTH>
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Thu, 25 Apr 2024 03:19:53 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '4'
+      cache-control:
+      - no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0
+      x-toggl-request-id:
+      - 71cdcf7c-7801-4ec2-933c-622ffea7e821
+      x-service-level:
+      - GREEN
+      instance:
+      - track-public-api-proxy-f666f86df-kw6z2
+      strict-transport-security:
+      - max-age=15552000; includeSubDomains
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-we-are-hiring:
+      - https://toggl.com/jobs/
+      x-request-id:
+      - 5dc5e041700d334056596bd576b21ea5
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      via:
+      - 1.1 google
+      alt-svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: 'null'
+  recorded_at: Thu, 25 Apr 2024 03:19:53 GMT
+recorded_with: VCR 6.2.0

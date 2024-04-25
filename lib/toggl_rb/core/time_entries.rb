@@ -28,6 +28,13 @@ module TogglRb
         send_request(request_method, resource_path).body_json
       end
 
+
+      request_method :get
+      request_path "me/time_entries/current"
+      def current
+        send_request(request_method, request_path).body_json
+      end
+
       request_method :post
       request_path "workspaces/%<workspace_id>s/time_entries"
       param :billable, "Boolean", optional: true, default: false,
@@ -77,3 +84,4 @@ module TogglRb
     end
   end
 end
+
