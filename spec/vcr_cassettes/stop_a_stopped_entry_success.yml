@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: https://api.track.toggl.com/api/v9/workspaces/<TOGGL_WORKSPACE_ID>/time_entries/3421446028/stop
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.9.0
+      Authorization:
+      - Basic <TOGGL_BASIC_AUTH>
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      server:
+      - nginx
+      date:
+      - Thu, 25 Apr 2024 03:29:50 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '28'
+      cache-control:
+      - no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0
+      x-toggl-request-id:
+      - 9135a46e-8698-4e70-b9a3-cee0d6fa57f1
+      instance:
+      - track-public-api-proxy-f666f86df-ng2v4
+      strict-transport-security:
+      - max-age=15552000; includeSubDomains
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-we-are-hiring:
+      - https://toggl.com/jobs/
+      x-request-id:
+      - 8167846547bd6c2143c49da87b395c2b
+      via:
+      - 1.1 google
+      alt-svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: '"Time entry already stopped"'
+  recorded_at: Thu, 25 Apr 2024 03:29:50 GMT
+recorded_with: VCR 6.2.0
