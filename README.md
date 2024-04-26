@@ -41,8 +41,8 @@ Currently TogglRb only supports a select subset of endpoints:
 | Projects    | [POST WorkspaceProjects](https://engineering.toggl.com/docs/api/projects#post-workspaceprojects)                                   |   ✔️   |
 | Users       | [GET List of users who belong to the given workspace](workspace-users-doc)                                                         |   ✔️   |
 | TimeEntries | [GET TimeEntries](https://engineering.toggl.com/docs/api/time_entries#get-timeentries)                                             |   ✔️   |
-| TimeEntries | [GET Get current time entry](https://engineering.toggl.com/docs/api/time_entries#get-get-current-time-entry)                       |   🔲   |
-| TimeEntries | [GET Get a time entry by ID](https://engineering.toggl.com/docs/api/time_entries#get-get-a-time-entry-by-id)                       |   🔲   |
+| TimeEntries | [GET Get current time entry](https://engineering.toggl.com/docs/api/time_entries#get-get-current-time-entry)                       |   ✔️   |
+| TimeEntries | [GET Get a time entry by ID](https://engineering.toggl.com/docs/api/time_entries#get-get-a-time-entry-by-id)                       |   ✔️   |
 | TimeEntries | [POST TimeEntries](https://engineering.toggl.com/docs/api/time_entries#post-timeentries)                                           |   ✔️   |
 | TimeEntries | [PATCH Bulk editing time entries](https://engineering.toggl.com/docs/api/time_entries#patch-bulk-editing-time-entries)             |   ✔️   |
 | TimeEntries | [PUT TimeEntries](https://engineering.toggl.com/docs/api/time_entries#put-timeentries)                                             |   🔲   |
