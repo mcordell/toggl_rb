@@ -1,0 +1,33 @@
+module TogglRb
+  # TimeEntry is an object that represents a Toggl TimeEntry
+  class TimeEntry
+    @id: Integer
+
+    API_ATTRIBUTES: ::Array[:billable | :created_with | :description | :duration | :project_id | :shared_with_user_ids | :start | :start_date | :stop | :tag_ids | :tags | :task_id | :user_id | :workspace_id]
+
+    UNSET: Object
+
+    attr_reader id: Integer
+
+    attr_accessor workspace_id: Integer
+
+    # @param id [Integer] the id of the time entry
+    def initialize: (untyped id) -> void
+
+    def update!: () -> Hash[untyped, untyped]
+
+    def delete!: () -> bool
+
+    # Load attributes from the API, will set attributes on this instance from the API
+    # @return [TogglRb::TimeEntry] self
+    def load_attributes!: () -> self
+
+    # @return [Hash] attributes for making a request
+    def body_attributes: () -> Hash[Symbol, untyped]
+
+    # rubocop:disable Naming/AccessorMethodName
+    # @param attrs [Hash] attributes to set on this instance
+    # @return [TogglRb::TimeEntry] self
+    def set_attributes: (Hash[Symbol|String, untyped] attrs) -> self
+  end
+end

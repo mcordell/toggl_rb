@@ -41,7 +41,7 @@ module TogglRb
     def next_page_request
       raise TogglRb::Error, "Request not pagninatable" unless request.params.is_a?(Params)
 
-      request.params.first_row_number = next_row_number
+      request.params.first_row_number = next_row_number if more?
       request
     end
 

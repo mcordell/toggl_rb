@@ -15,7 +15,9 @@ require_relative "toggl_rb/core"
 require_relative "toggl_rb/version"
 require_relative "toggl_rb/json_patch"
 require_relative "toggl_rb/workspace"
+require_relative "toggl_rb/time_entry"
 
+# A Toggl API client for version V9 and reports API V3
 module TogglRb
   # A custom error class for the TogglRb module, inheriting from StandardError.
   class Error < StandardError; end
