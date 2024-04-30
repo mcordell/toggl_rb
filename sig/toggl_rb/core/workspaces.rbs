@@ -5,7 +5,7 @@ module TogglRb
       extend EndpointDSL::ClassMethods
       include TogglRb::RequestHelpers
 
-      def get: (String | Integer workspace_id) -> Hash[String, untyped]
+      def get: (String | Integer workspace_id) -> untyped
 
       private
 

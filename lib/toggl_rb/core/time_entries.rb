@@ -81,6 +81,39 @@ module TogglRb
         send_request(request_method, resource_path, params).body_json
       end
 
+      request_method :put
+      request_path "workspaces/%<workspace_id>s/time_entries/%<time_entry_id>s"
+
+      param :billable, "Boolean", optional: true, default: false,
+                                  description: "Whether the time entry is marked as billable."
+      param :created_with, String, required: true,
+                                   description: "Identifies the service/application used to create it."
+      param :description, String, optional: true, description: "Time entry description."
+      param :duration, Integer, required: true, description: "Duration in seconds; negative for running entries."
+      param :pid, Integer, optional: true, description: "Project ID (legacy field)."
+      param :project_id, Integer, optional: true, description: "Project ID."
+      param :shared_with_user_ids, "Array<Integer>", optional: true,
+                                                     description: "User IDs to share this time entry with."
+      param :start, Time, required: true, description: "Start time in UTC. Format: 2006-01-02T15:04:05Z."
+      param :start_date, Date, optional: true,
+                               description: "Takes precedence over the date part of 'start'. Format: 2006-11-07."
+      param :stop, Time, optional: true, description: "Stop time in UTC."
+      param :tag_action, String, optional: true, description: "Used when updating; can be 'add' or 'delete'."
+      param :tag_ids, "Array<Integer>", optional: true, description: "Tag IDs to add/remove."
+      param :tags, "Array<String>", optional: true,
+                                    description: "Tag names to add/remove; creates tag if it doesn't exist."
+      param :task_id, Integer, optional: true, description: "Task ID."
+      param :tid, Integer, optional: true, description: "Task ID, legacy field"
+
+      param :uid, Integer, optional: true, description: "Time Entry creator ID; legacy field"
+      param :user_id, Integer, optional: true, description: "Time Entry creator ID; uses requester ID if omitted."
+      param :wid, Integer, required: true, description: "Workspace ID, legacy field"
+      param :workspace_id, Integer, required: true, description: "Workspace ID."
+      def update(workspace_id, time_entry_id, request_params = {})
+        params = build_params(request_params)
+        resource_path = format(request_path, workspace_id: workspace_id, time_entry_id: time_entry_id)
+        send_request(request_method, resource_path, params).body_json
+      end
 
       request_method :delete
       request_path "workspaces/%<workspace_id>s/time_entries/%<time_entry_id>s"
@@ -113,4 +146,3 @@ module TogglRb
     end
   end
 end
-
