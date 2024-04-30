@@ -45,8 +45,8 @@ Currently TogglRb only supports a select subset of endpoints:
 | TimeEntries | [GET Get a time entry by ID](https://engineering.toggl.com/docs/api/time_entries#get-get-a-time-entry-by-id)                       |   ✔️   |
 | TimeEntries | [POST TimeEntries](https://engineering.toggl.com/docs/api/time_entries#post-timeentries)                                           |   ✔️   |
 | TimeEntries | [PATCH Bulk editing time entries](https://engineering.toggl.com/docs/api/time_entries#patch-bulk-editing-time-entries)             |   ✔️   |
-| TimeEntries | [PUT TimeEntries](https://engineering.toggl.com/docs/api/time_entries#put-timeentries)                                             |   🔲   |
-| TimeEntries | [DELETE TimeEntries](https://engineering.toggl.com/docs/api/time_entries#delete-timeentries)                                       |   🔲   |
+| TimeEntries | [PUT TimeEntries](https://engineering.toggl.com/docs/api/time_entries#put-timeentries)                                             |   ✔️   |
+| TimeEntries | [DELETE TimeEntries](https://engineering.toggl.com/docs/api/time_entries#delete-timeentries)                                       |   ✔️   |
 | TimeEntries | [PATCH Stop TimeEntry](https://engineering.toggl.com/docs/api/time_entries#patch-stop-timeentry)                                   |   ✔️   |
 | Workspaces  | [POST Create a new workspace](https://engineering.toggl.com/docs/api/workspaces#post-create-a-new-workspace)                       |   🔲   |
 | Workspaces  | [GET List of users who belong to the given workspace][list-users]                                                                  |   🔲   |
