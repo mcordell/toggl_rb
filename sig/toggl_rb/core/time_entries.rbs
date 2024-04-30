@@ -18,9 +18,12 @@ module TogglRb
       # @param operation    [TogglRb::JSONPatch] the operation to apply to the time entries
       def patch: (untyped workspace_id, untyped time_entries, untyped operation) -> untyped
 
+      def delete: ((String | Integer) workspace_id, (String | Integer) time_entry_id) -> bool
+
       private
 
       def connection: () -> untyped
     end
   end
 end
+

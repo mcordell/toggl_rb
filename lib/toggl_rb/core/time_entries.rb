@@ -81,9 +81,22 @@ module TogglRb
         send_request(request_method, resource_path, params).body_json
       end
 
+
+      request_method :delete
+      request_path "workspaces/%<workspace_id>s/time_entries/%<time_entry_id>s"
+
+      # @param workspace_id [String, Integer] the workspace ID
+      # @param time_entries [Array<Integer>] the IDs of the task entries to update
+      # @return [Boolean] whether the delete succeeded
+      def delete(workspace_id, time_entry_id)
+        resource_path = format(request_path, workspace_id: workspace_id, time_entry_id: time_entry_id)
+        response = send_request(request_method, resource_path)
+        response.success?
+      end
+
       request_method :patch
       request_path "workspaces/%<workspace_id>s/time_entries/%<time_entry_ids>s"
-      # @param workspace_id [String|Integer] the workspace ID
+      # @param workspace_id [String, Integer] the workspace ID
       # @param time_entries [Array<Integer>] the IDs of the task entries to update
       # @param operation    [TogglRb::JSONPatch] the operation to apply to the time entries
       def patch(workspace_id, time_entries, operation)
@@ -100,3 +113,4 @@ module TogglRb
     end
   end
 end
+
