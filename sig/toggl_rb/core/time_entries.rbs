@@ -5,6 +5,8 @@ module TogglRb
       include RequestHelpers
       extend EndpointDSL::ClassMethods
 
+      def get: (Integer time_entry_id, ?Hash[untyped, untyped] query_params) -> untyped
+
       def list: (Hash[untyped, untyped] query_params) -> Array[untyped]
 
       # NOTE: tid is a legacy field for Task ID.
@@ -20,10 +22,11 @@ module TogglRb
 
       def delete: ((String | Integer) workspace_id, (String | Integer) time_entry_id) -> bool
 
+      def update: ((String | Integer) workspace_id, (String | Integer) time_entry_id, ?Hash[untyped, untyped] request_params) -> untyped
+      
       private
 
       def connection: () -> untyped
     end
   end
 end
-
