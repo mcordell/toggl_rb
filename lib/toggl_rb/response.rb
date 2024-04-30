@@ -48,6 +48,8 @@ module TogglRb
     # Delegates the status method call directly to the Faraday response object.
     # @!method status
     # @return [Integer] the HTTP status code of the response
-    def_delegators :@faraday_response, :status
+    # @!method success?
+    # @return [Boolean] whether the request successful according to Farday response success
+    def_delegators :@faraday_response, :status, :success?
   end
 end

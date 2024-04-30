@@ -7,7 +7,7 @@ module TogglRb
     end
 
     module ClassMethods
-      ALLOWED_METHOD_TYPES = %i[post get put patch].freeze
+      ALLOWED_METHOD_TYPES = %i[post get put patch delete].freeze
       ALLOWED_PRETTY = ALLOWED_METHOD_TYPES.map { |s| ":#{s}" }.join(", ").freeze
 
       def method_added(method_name)
