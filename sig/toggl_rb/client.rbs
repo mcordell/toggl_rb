@@ -1,14 +1,12 @@
 module TogglRb
   class Client
-    @core_connection: untyped
+    @core_connection: Connection
 
-    @reports_connection: untyped
+    @reports_connection: Connection
 
-    attr_reader core_connection: untyped
+    attr_reader core_connection: Connection
 
-    attr_reader reports_connection: untyped
-
-    URLS: { core: { url: "https://api.track.toggl.com/api/v9" }, reports: { url: "https://api.track.toggl.com/reports/api/v3/" } }
+    attr_reader reports_connection: Connection
 
     def initialize: () -> void
 
