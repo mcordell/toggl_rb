@@ -8,7 +8,7 @@ RSpec.describe "Core - V9 - Search For Project", type: :feature do
       VCR.use_cassette("search_projects_no_filter") do
         response = api.search(workspace_id)
 
-        expect(response.body_json).to match(
+        expect(response).to match(
           [{ "active" => true,
              "actual_hours" => 0,
              "actual_seconds" => 202,
@@ -75,9 +75,9 @@ RSpec.describe "Core - V9 - Search For Project", type: :feature do
       it "runs the operation successfully" do
         VCR.use_cassette("search_project_by_name") do
           response = api.search(workspace_id, name: "A project")
-          expect(response.body_json.count).to eq 1
+          expect(response.count).to eq 1
 
-          expect(response.body_json[0]["name"]).to eq "A project"
+          expect(response[0]["name"]).to eq "A project"
         end
       end
     end

@@ -1,16 +1,7 @@
 module TogglRb
   module Core
-    class Users
-      include EndpointDSL
-      extend EndpointDSL::ClassMethods
-
-      def list: (untyped workspace_id) -> untyped
-
-      private
-
-      def send_request: (untyped request_method, untyped resource_path, untyped body) -> untyped
-
-      def connection: () -> untyped
+    class Users < Base
+      def list: ((String | Integer) workspace_id) -> untyped
     end
   end
 end

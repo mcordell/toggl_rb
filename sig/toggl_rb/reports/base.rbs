@@ -1,0 +1,16 @@
+module TogglRb
+  module Reports
+    class Base
+      include TogglRb::EndpointDSL
+      include TogglRb::RequestHelpers
+      extend TogglRb::EndpointDSL::ClassMethods
+
+      # _@param_ `connection` — core connection to use for requests
+      def initialize: (?TogglRb::Connection? connection) -> void
+
+      # _@return_ — core connection to use for requests
+      def connection: () -> TogglRb::Connection
+    end
+  end
+end
+

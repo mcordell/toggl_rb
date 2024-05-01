@@ -1,15 +1,7 @@
 module TogglRb
   module Core
-    class Workspaces
-      include TogglRb::EndpointDSL
-      extend EndpointDSL::ClassMethods
-      include TogglRb::RequestHelpers
-
+    class Workspaces < Base
       def get: (String | Integer workspace_id) -> untyped
-
-      private
-
-      def connection: () -> TogglRb::Connection
     end
   end
 end
