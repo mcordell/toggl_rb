@@ -1,32 +1,17 @@
 module TogglRb
   module Core
-    class TimeEntries
-      include EndpointDSL
-      include RequestHelpers
-      extend EndpointDSL::ClassMethods
-
+    class TimeEntries < Base
       def get: (Integer time_entry_id, ?Hash[untyped, untyped] query_params) -> untyped
 
       def list: (Hash[untyped, untyped] query_params) -> Array[untyped]
 
-      # NOTE: tid is a legacy field for Task ID.
-      # Note: uid is a legacy field for Time Entry creator ID.
-      # NOTE: duronly is deprecated and can be ignored.
-      # NOTE: wid is a legacy param for Workspace ID which will be populated with the passed argument
       def create: (untyped workspace_id, untyped time_entry_attributes) -> untyped
 
-      # @param workspace_id [String|Integer] the workspace ID
-      # @param time_entries [Array<Integer>] the IDs of the task entries to update
-      # @param operation    [TogglRb::JSONPatch] the operation to apply to the time entries
-      def patch: (untyped workspace_id, untyped time_entries, untyped operation) -> untyped
+      def patch: ((String | Integer) workspace_id, Array[Integer] time_entries, TogglRb::JSONPatch operation) -> untyped
 
       def delete: ((String | Integer) workspace_id, (String | Integer) time_entry_id) -> bool
 
       def update: ((String | Integer) workspace_id, (String | Integer) time_entry_id, ?Hash[untyped, untyped] request_params) -> untyped
-      
-      private
-
-      def connection: () -> untyped
     end
   end
 end

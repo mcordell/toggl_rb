@@ -4,10 +4,7 @@ module TogglRb
   module Core
     # Time Entries endpoint
     # @see https://engineering.toggl.com/docs/api/time_entries
-    class TimeEntries
-      include EndpointDSL
-      include RequestHelpers
-
+    class TimeEntries < Base
       request_method :get
       request_path "me/time_entries"
       query_param :since, Integer,
@@ -136,12 +133,6 @@ module TogglRb
         resource_path = format(request_path, workspace_id: workspace_id, time_entry_ids: time_entries.join(","))
 
         send_request(request_method, resource_path, operation).body_json
-      end
-
-      private
-
-      def connection
-        TogglRb::Core.connection
       end
     end
   end

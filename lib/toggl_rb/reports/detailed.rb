@@ -4,9 +4,7 @@ require "json"
 
 module TogglRb
   module Reports
-    class Detailed
-      include TogglRb::EndpointDSL
-      include RequestHelpers
+    class Detailed < Base
       # @param [String|Integer] workspace_id the toggl workspace id we are searching
       # @param [Hash] params the options for searching for time entries
       # @option params [Boolean]        :grouped              Whether time entries should be grouped, optional, default
@@ -55,12 +53,6 @@ module TogglRb
         return response.body_json unless request_options.fetch(:get_all, false)
 
         request_all(response)
-      end
-
-      private
-
-      def connection
-        TogglRb::Reports.connection
       end
     end
   end

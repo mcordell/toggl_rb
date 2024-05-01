@@ -4,10 +4,7 @@ require "json"
 
 module TogglRb
   module Core
-    class Me
-      include EndpointDSL
-      include RequestHelpers
-
+    class Me < Base
       request_method :get
       request_path "me"
       query_param :with_related_data, "Boolean", description: "whether to include related data"
@@ -41,12 +38,6 @@ module TogglRb
         # TODO: implement since query_param
         query_params["since"]
         send_request(request_method, request_path).body_json
-      end
-
-      private
-
-      def connection
-        TogglRb::Core.connection
       end
     end
   end

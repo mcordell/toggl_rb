@@ -2,22 +2,13 @@
 
 module TogglRb
   module Core
-    class Users
-      include EndpointDSL
-      include RequestHelpers
-
+    class Users < Base
       request_method :get
       request_path "workspaces/%<workspace_id>s/users"
       def list(workspace_id)
         resource_path = format(request_path, workspace_id: workspace_id)
 
         send_request(request_method, resource_path, nil).body_json
-      end
-
-      private
-
-      def connection
-        TogglRb::Core.connection
       end
     end
   end

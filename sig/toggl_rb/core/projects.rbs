@@ -1,18 +1,9 @@
 module TogglRb
   module Core
-    class Projects
-      include TogglRb::EndpointDSL
-      extend EndpointDSL::ClassMethods
-
+    class Projects < Base
       def search: (untyped workspace_id, ?::Hash[untyped, untyped] query_params) -> untyped
 
       def create: (untyped workspace_id, untyped project_attributes) -> untyped
-
-      private
-
-      def send_request: (untyped request_method, untyped resource_path, untyped body) -> untyped
-
-      def connection: () -> untyped
     end
   end
 end

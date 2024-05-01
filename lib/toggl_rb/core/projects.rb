@@ -2,10 +2,7 @@
 
 module TogglRb
   module Core
-    class Projects
-      include TogglRb::EndpointDSL
-      include RequestHelpers
-
+    class Projects < Base
       request_method :get
       request_path "workspaces/%<workspace_id>s/projects"
       query_param :active,	"boolean", description: "active"
@@ -23,12 +20,8 @@ module TogglRb
       query_param :only_templates,	"boolean", description: "only_templates"
       query_param :per_page,	Integer, description: "Number of items per page, default 151. Cannot exceed 200."
       def search(workspace_id, query_params = {})
-        params = build_query_params(query_params)
-        resource_path = format(request_path, workspace_id: workspace_id)
-        response = connection.get(resource_path) do |request|
-          request.params = params.request_params
-        end
-        Response.new(response)
+        resource_path = build_query_params(query_params).build_url(format(request_path, workspace_id: workspace_id))
+        send_request(request_method, resource_path).body_json
       end
 
       request_method :post
@@ -63,12 +56,6 @@ module TogglRb
         resource_path = format(request_path, workspace_id: workspace_id)
 
         send_request(request_method, resource_path, params).body_json
-      end
-
-      private
-
-      def connection
-        TogglRb::Core.connection
       end
     end
   end

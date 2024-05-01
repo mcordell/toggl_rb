@@ -5,10 +5,7 @@ module TogglRb
     # The Summary Reports API provides an aggregation of time entries data,
     # giving you an overview of total tracked time divided into different
     # categories.
-    class Summary
-      include TogglRb::EndpointDSL
-      include RequestHelpers
-
+    class Summary < Base
       request_path "workspace/%<workspace_id>s/summary/time_entries"
       request_method :post
       param :billable, "Boolean", optional: true, description: "Whether the time entry is set as billable."
@@ -42,12 +39,6 @@ module TogglRb
         resource_path = format(request_path, workspace_id: workspace_id)
         response = send_request(request_method, resource_path, params_object)
         response.body_json
-      end
-
-      private
-
-      def connection
-        TogglRb::Reports.connection
       end
     end
   end
