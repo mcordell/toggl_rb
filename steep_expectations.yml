@@ -3,10 +3,10 @@
   diagnostics:
   - range:
       start:
-        line: 14
+        line: 33
         character: 28
       end:
-        line: 14
+        line: 33
         character: 35
     severity: WARNING
     message: 'Cannot find the declaration of constant: `Faraday`'
@@ -15,10 +15,10 @@
   diagnostics:
   - range:
       start:
-        line: 26
+        line: 23
         character: 10
       end:
-        line: 26
+        line: 23
         character: 14
     severity: ERROR
     message: |-

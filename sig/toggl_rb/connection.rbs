@@ -7,6 +7,12 @@ module TogglRb
 
     extend Forwardable
 
+    URLS: { core: { url: "https://api.track.toggl.com/api/v9" }, reports: { url: "https://api.track.toggl.com/reports/api/v3/" } }
+
+    def self.core_connection: () -> Connection
+
+    def self.reports_connection: () -> Connection
+
     def initialize: (String url) -> void
 
     def setup_auth!: () -> Connection

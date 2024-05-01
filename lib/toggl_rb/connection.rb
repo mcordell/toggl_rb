@@ -8,11 +8,36 @@ module TogglRb
   class Connection
     extend Forwardable
 
+    URLS = {
+      core: { url: "https://api.track.toggl.com/api/v9" },
+      reports: { url: "https://api.track.toggl.com/reports/api/v3/" }
+    }.freeze
+
+    # @!attribute [r] api_token
+    #   @return [String, nil] the API token for making requests
+    attr_reader :api_token
+
+    # @return [Connection] returns a connection setup with the core URL
+    def self.core_connection
+      new(URLS.dig(:core, :url))
+    end
+
+    # @return [Connection] returns a connection setup with the reports URL
+    def self.reports_connection
+      new(URLS.dig(:reports, :url))
+    end
+
     # Initializes a new Connection object and sets up the HTTP connection with Faraday.
     # @param url [String] the base URL for the Toggl API
     def initialize(url)
       @faraday_connection = Faraday.new(url)
       setup_connection!
+    end
+
+    # @param api_token [String] the API token to set on this instance and use for requests
+    def api_token=(api_token)
+      @api_token = api_token
+      faraday_connection.set_basic_auth(api_token, TogglRb::Config::API_TOKEN_PASSWORD)
     end
 
     # Configures authentication for the Faraday connection based on the TogglRb
