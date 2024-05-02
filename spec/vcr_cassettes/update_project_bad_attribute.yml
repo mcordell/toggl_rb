@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.track.toggl.com/api/v9/workspaces/<TOGGL_WORKSPACE_ID>/projects/201876878
+    body:
+      encoding: UTF-8
+      string: '{"color":"#FFFFFF"}'
+    headers:
+      User-Agent:
+      - Faraday v2.9.0
+      Authorization:
+      - Basic <TOGGL_BASIC_AUTH>
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 402
+      message: Payment Required
+    headers:
+      server:
+      - nginx
+      date:
+      - Thu, 02 May 2024 00:31:17 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '56'
+      cache-control:
+      - no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0
+      x-toggl-request-id:
+      - 9d5283c9-b51c-4d44-81a0-9d9fe4690b2c
+      instance:
+      - track-public-api-proxy-68c8f5bc4-p2xq2
+      strict-transport-security:
+      - max-age=15552000; includeSubDomains
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-we-are-hiring:
+      - https://toggl.com/jobs/
+      x-request-id:
+      - 03d4240a88d333a6258cc16e98ed8745
+      via:
+      - 1.1 google
+      alt-svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: '"Custom project colors available only for premium plans"'
+  recorded_at: Thu, 02 May 2024 00:31:17 GMT
+recorded_with: VCR 6.2.0
