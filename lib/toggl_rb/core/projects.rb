@@ -57,6 +57,17 @@ module TogglRb
 
         send_request(request_method, resource_path, params).body_json
       end
+
+      request_method :patch
+      request_path "workspaces/%<workspace_id>s/projects/%<project_ids>s"
+      # @param workspace_id [String, Integer] the workspace ID
+      # @param project_ids [Array<Integer>] the IDs of the projects update
+      # @param operation    [TogglRb::JSONPatch] the operation to apply to the time entries
+      def patch(workspace_id, project_ids, operation)
+        resource_path = format(request_path, workspace_id: workspace_id, project_ids: project_ids.join(","))
+
+        send_request(request_method, resource_path, operation).body_json
+      end
     end
   end
 end
