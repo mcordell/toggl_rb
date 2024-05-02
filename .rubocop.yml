@@ -20,5 +20,8 @@ RSpec/ExampleLength:
 RSpec/InferredSpecType:
   Enabled: false
 
+RSpec/MultipleExpectations:
+  Enabled: false
+
 Layout/LineLength:
   Max: 120
