@@ -1,3 +1,7 @@
+type string_or_int = String | Integer
+
+type attributes = ::Hash[untyped,untyped]
+
 module TogglRb
   self.@config: TogglRb::Config
 

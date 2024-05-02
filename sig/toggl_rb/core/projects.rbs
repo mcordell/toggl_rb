@@ -1,9 +1,21 @@
 module TogglRb
   module Core
     class Projects < Base
-      def search: (untyped workspace_id, ?::Hash[untyped, untyped] query_params) -> untyped
+      def search: (string_or_int workspace_id, ?::Hash[untyped, untyped]  query_params) -> untyped
 
-      def create: (untyped workspace_id, untyped project_attributes) -> untyped
+      def create: (string_or_int workspace_id, attributes params) -> untyped
+
+      def delete: (string_or_int workspace_id, string_or_int project_id) -> bool
+
+      def update: (string_or_int workspace_id, string_or_int project_id, ?attributes params) -> untyped
+
+      def patch: (string_or_int workspace_id, Array[Integer] project_ids, TogglRb::JSONPatch operation) -> untyped
+
+      def get: (string_or_int workspace_id, string_or_int project_id) -> untyped
+
+      def handle_error: (Response response) -> untyped
+
+      def handle_response: (Response response) -> untyped
     end
   end
 end

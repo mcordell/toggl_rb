@@ -5,13 +5,13 @@ module TogglRb
 
       def list: (Hash[untyped, untyped] query_params) -> Array[untyped]
 
-      def create: (untyped workspace_id, untyped time_entry_attributes) -> untyped
+      def create: (untyped workspace_id, attributes time_entry_attributes) -> untyped
 
-      def patch: ((String | Integer) workspace_id, Array[Integer] time_entries, TogglRb::JSONPatch operation) -> untyped
+      def patch: (string_or_int workspace_id, Array[Integer] time_entries, TogglRb::JSONPatch operation) -> untyped
 
-      def delete: ((String | Integer) workspace_id, (String | Integer) time_entry_id) -> bool
+      def delete: (string_or_int workspace_id, string_or_int time_entry_id) -> bool
 
-      def update: ((String | Integer) workspace_id, (String | Integer) time_entry_id, ?Hash[untyped, untyped] request_params) -> untyped
+      def update: (string_or_int workspace_id, string_or_int time_entry_id, ?Hash[untyped, untyped] request_params) -> untyped
     end
   end
 end
