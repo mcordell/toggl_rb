@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.track.toggl.com/api/v9/workspaces/<TOGGL_WORKSPACE_ID>/projects/202440103
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.9.0
+      Authorization:
+      - Basic <TOGGL_BASIC_AUTH>
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Thu, 02 May 2024 15:10:55 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '9'
+      cache-control:
+      - no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0
+      x-toggl-request-id:
+      - 96fc1b6a-a638-4593-baec-adb2263d5e4e
+      x-service-level:
+      - GREEN
+      instance:
+      - track-public-api-proxy-68c8f5bc4-p2xq2
+      strict-transport-security:
+      - max-age=15552000; includeSubDomains
+      x-frame-options:
+      - SAMEORIGIN
+      x-content-type-options:
+      - nosniff
+      x-we-are-hiring:
+      - https://toggl.com/jobs/
+      x-request-id:
+      - a812e20647dce90d348f4536590470ca
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      via:
+      - 1.1 google
+      alt-svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: '202440103'
+  recorded_at: Thu, 02 May 2024 15:10:55 GMT
+recorded_with: VCR 6.2.0

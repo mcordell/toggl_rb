@@ -112,6 +112,18 @@ module TogglRb
         handle_response(send_request(request_method, resource_path, params))
       end
 
+      request_method :delete
+      request_path "workspaces/%<workspace_id>s/projects/%<project_id>s"
+
+      # @param workspace_id [String, Integer] the workspace ID
+      # @param project_id [Integer] the ID of the project to delete
+      # @return [Boolean] whether the delete succeeded
+      def delete(workspace_id, project_id)
+        resource_path = format(request_path, workspace_id: workspace_id, project_id: project_id)
+        response = send_request(request_method, resource_path)
+        response.success?
+      end
+
       private
 
       def handle_response(response)
