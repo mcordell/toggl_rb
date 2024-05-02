@@ -116,7 +116,7 @@ module TogglRb
       request_path "workspaces/%<workspace_id>s/time_entries/%<time_entry_id>s"
 
       # @param workspace_id [String, Integer] the workspace ID
-      # @param time_entries [Array<Integer>] the IDs of the task entries to update
+      # @param time_entry_id [String, Integer] the ID of the time entry to delete
       # @return [Boolean] whether the delete succeeded
       def delete(workspace_id, time_entry_id)
         resource_path = format(request_path, workspace_id: workspace_id, time_entry_id: time_entry_id)
