@@ -2,6 +2,8 @@
 
 module TogglRb
   module Core
+    # Projects is the API for the project endpoints
+    # @see https://engineering.toggl.com/docs/api/projects#get-workspaceprojects
     class Projects < Base
       request_method :get
       request_path "workspaces/%<workspace_id>s/projects"
@@ -21,6 +23,13 @@ module TogglRb
       query_param :per_page,	Integer, description: "Number of items per page, default 151. Cannot exceed 200."
       def search(workspace_id, query_params = {})
         resource_path = build_query_params(query_params).build_url(format(request_path, workspace_id: workspace_id))
+        send_request(request_method, resource_path).body_json
+      end
+
+      request_method :get
+      request_path "workspaces/%<workspace_id>s/projects/%<project_id>s"
+      def get(workspace_id, project_id)
+        resource_path = format(request_path, workspace_id: workspace_id, project_id: project_id)
         send_request(request_method, resource_path).body_json
       end
 
