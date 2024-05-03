@@ -11,31 +11,14 @@
     severity: WARNING
     message: 'Cannot find the declaration of constant: `Faraday`'
     code: Ruby::UnknownConstant
-- file: lib/toggl_rb/core/time_entries.rb
-  diagnostics:
-  - range:
-      start:
-        line: 23
-        character: 10
-      end:
-        line: 23
-        character: 14
-    severity: ERROR
-    message: |-
-      Cannot allow method body have type `(::Hash[untyped, untyped] | ::Array[untyped])` because declared as type `::Array[untyped]`
-        (::Hash[untyped, untyped] | ::Array[untyped]) <: ::Array[untyped]
-          ::Hash[untyped, untyped] <: ::Array[untyped]
-            ::Object <: ::Array[untyped]
-              ::BasicObject <: ::Array[untyped]
-    code: Ruby::MethodBodyTypeMismatch
 - file: lib/toggl_rb/request.rb
   diagnostics:
   - range:
       start:
-        line: 27
+        line: 28
         character: 30
       end:
-        line: 27
+        line: 28
         character: 39
     severity: ERROR
     message: Type `(::Hash[untyped, untyped] | ::Array[untyped])` does not have method

@@ -11,7 +11,7 @@ module TogglRb
       # @param with_related_data [Boolean] whether to include related data
       def get(with_related_data: false)
         resource_path = with_related_data ? "#{request_path}?with_related_data=true" : request_path
-        send_request(request_method, resource_path).body_json
+        send_request(request_method, resource_path)
       end
 
       request_method :put
@@ -26,7 +26,7 @@ module TogglRb
       param :password, String, description: "User's new password (current one must also be provided)"
       param :timezone, String, description: "User's timezone"
       def update(params)
-        send_request(request_method, request_path, build_params(params)).body_json
+        send_request(request_method, request_path, build_params(params))
       end
 
       request_method :get
@@ -37,7 +37,7 @@ module TogglRb
       def workspaces(query_params = {})
         # TODO: implement since query_param
         query_params["since"]
-        send_request(request_method, request_path).body_json
+        send_request(request_method, request_path)
       end
     end
   end

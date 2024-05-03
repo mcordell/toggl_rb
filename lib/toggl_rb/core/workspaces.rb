@@ -7,7 +7,7 @@ module TogglRb
       request_path "workspaces/%<workspace_id>s"
       # @param workspace_id [Integer, String] the workspace id to get
       def get(workspace_id)
-        send_request(request_method, format(request_path, workspace_id: workspace_id)).body_json
+        send_request(request_method, format(request_path, workspace_id: workspace_id))
       end
     end
   end

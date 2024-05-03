@@ -8,7 +8,7 @@ module TogglRb
       def list(workspace_id)
         resource_path = format(request_path, workspace_id: workspace_id)
 
-        send_request(request_method, resource_path, nil).body_json
+        send_request(request_method, resource_path, nil)
       end
     end
   end

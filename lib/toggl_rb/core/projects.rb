@@ -23,14 +23,14 @@ module TogglRb
       query_param :per_page,	Integer, description: "Number of items per page, default 151. Cannot exceed 200."
       def search(workspace_id, query_params = {})
         resource_path = build_query_params(query_params).build_url(format(request_path, workspace_id: workspace_id))
-        handle_response(send_request(request_method, resource_path))
+        send_request(request_method, resource_path)
       end
 
       request_method :get
       request_path "workspaces/%<workspace_id>s/projects/%<project_id>s"
       def get(workspace_id, project_id)
         resource_path = format(request_path, workspace_id: workspace_id, project_id: project_id)
-        handle_response(send_request(request_method, resource_path))
+        send_request(request_method, resource_path)
       end
 
       request_method :post
@@ -64,7 +64,7 @@ module TogglRb
       def create(workspace_id, params)
         resource_path = format(request_path, workspace_id: workspace_id)
 
-        handle_response(send_request(request_method, resource_path, params))
+        send_request(request_method, resource_path, params)
       end
 
       request_method :patch
@@ -75,7 +75,7 @@ module TogglRb
       def patch(workspace_id, project_ids, operation)
         resource_path = format(request_path, workspace_id: workspace_id, project_ids: project_ids.join(","))
 
-        handle_response(send_request(request_method, resource_path, operation))
+        send_request(request_method, resource_path, operation)
       end
 
       request_method :put
@@ -109,7 +109,7 @@ module TogglRb
       def update(workspace_id, project_id, request_params = {})
         params = build_params(request_params)
         resource_path = format(request_path, workspace_id: workspace_id, project_id: project_id)
-        handle_response(send_request(request_method, resource_path, params))
+        send_request(request_method, resource_path, params)
       end
 
       request_method :delete
@@ -120,20 +120,7 @@ module TogglRb
       # @return [Boolean] whether the delete succeeded
       def delete(workspace_id, project_id)
         resource_path = format(request_path, workspace_id: workspace_id, project_id: project_id)
-        response = send_request(request_method, resource_path)
-        response.success?
-      end
-
-      private
-
-      def handle_response(response)
-        return response.body_json if response.success?
-
-        handle_error(response)
-      end
-
-      def handle_error(response)
-        response.body_json
+        send_request(request_method, resource_path)
       end
     end
   end

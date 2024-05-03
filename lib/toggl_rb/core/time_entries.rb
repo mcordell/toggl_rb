@@ -4,6 +4,7 @@ module TogglRb
   module Core
     # Time Entries endpoint
     # @see https://engineering.toggl.com/docs/api/time_entries
+    # rubocop:disable Metrics/ClassLength
     class TimeEntries < Base
       request_method :get
       request_path "me/time_entries"
@@ -22,7 +23,7 @@ module TogglRb
       query_param :include_sharing, "boolean", description: "Include sharing details in the response"
       def list(query_params = {})
         resource_path = build_query_params(query_params).build_url(request_path)
-        send_request(request_method, resource_path).body_json
+        send_request(request_method, resource_path)
       end
 
       request_method :get
@@ -32,20 +33,20 @@ module TogglRb
       def get(time_entry_id, query_params = {})
         resource_path = format(request_path, time_entry_id: time_entry_id)
         resource_path = build_query_params(query_params).build_url(resource_path)
-        send_request(request_method, resource_path).body_json
+        send_request(request_method, resource_path)
       end
 
       request_method :get
       request_path "me/time_entries/current"
       def current
-        send_request(request_method, request_path).body_json
+        send_request(request_method, request_path)
       end
 
       request_method :patch
       request_path "workspaces/%<workspace_id>s/time_entries/%<time_entry_id>s/stop"
       def stop(workspace_id, time_entry_id)
         resource_path = format(request_path, time_entry_id: time_entry_id, workspace_id: workspace_id)
-        send_request(request_method, resource_path).body_json
+        send_request(request_method, resource_path)
       end
 
       request_method :post
@@ -75,7 +76,7 @@ module TogglRb
         params[:wid] = workspace_id.to_i
         resource_path = format(request_path, workspace_id: workspace_id)
 
-        send_request(request_method, resource_path, params).body_json
+        send_request(request_method, resource_path, params)
       end
 
       request_method :put
@@ -109,7 +110,7 @@ module TogglRb
       def update(workspace_id, time_entry_id, request_params = {})
         params = build_params(request_params)
         resource_path = format(request_path, workspace_id: workspace_id, time_entry_id: time_entry_id)
-        send_request(request_method, resource_path, params).body_json
+        send_request(request_method, resource_path, params)
       end
 
       request_method :delete
@@ -120,8 +121,7 @@ module TogglRb
       # @return [Boolean] whether the delete succeeded
       def delete(workspace_id, time_entry_id)
         resource_path = format(request_path, workspace_id: workspace_id, time_entry_id: time_entry_id)
-        response = send_request(request_method, resource_path)
-        response.success?
+        send_request(request_method, resource_path)
       end
 
       request_method :patch
@@ -132,8 +132,9 @@ module TogglRb
       def patch(workspace_id, time_entries, operation)
         resource_path = format(request_path, workspace_id: workspace_id, time_entry_ids: time_entries.join(","))
 
-        send_request(request_method, resource_path, operation).body_json
+        send_request(request_method, resource_path, operation)
       end
     end
   end
+  # rubocop:enable Metrics/ClassLength
 end

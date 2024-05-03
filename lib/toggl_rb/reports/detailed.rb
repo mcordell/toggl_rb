@@ -49,10 +49,7 @@ module TogglRb
         params_object = build_params(params)
         params_object.validate_required!
         resource_path = format(request_path, workspace_id: workspace_id)
-        response = send_request(request_method, resource_path, params_object)
-        return response.body_json unless request_options.fetch(:get_all, false)
-
-        request_all(response)
+        send_request(request_method, resource_path, params_object, request_options)
       end
     end
   end

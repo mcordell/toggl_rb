@@ -7,13 +7,14 @@ module TogglRb
     # @param resource_path [String] endpoint path on the API
     # @param body [Mixed] the body or request params
     # @return [TogglRb::Response]
-    def send_request(request_method, resource_path, body = nil)
-      Request.send_request(
-        connection,
-        request_method,
-        resource_path,
-        body
-      )
+    def send_request(request_method, resource_path, body = nil, request_options = {})
+      handle_response(Request.send_request(
+                        connection,
+                        request_method,
+                        resource_path,
+                        body,
+                        request_options
+                      ))
     end
 
     private
@@ -34,6 +35,22 @@ module TogglRb
     def connection
       raise "Connection is not implemented"
     end
+
+    def handle_response(response)
+      if response.success?
+        return true if response.request.delete?
+
+        return response.body_json unless response.request.get_all?
+
+        return request_all(response)
+      end
+
+      handle_error(response)
+    end
+
+    def handle_error(response)
+      response.body_json
+    end
   end
 
   # Request represents a single request for an API. It stores the relevant
@@ -45,8 +62,10 @@ module TogglRb
     # @param resource_path [String] endpoint path on the API
     # @param body [Mixed] the body or request params
     # @return [TogglRb::Response]
-    def self.send_request(connection, request_method, resource_path, body = nil)
-      new(connection).send_request(request_method, resource_path, body)
+    def self.send_request(connection, request_method, resource_path, body = nil, request_options = {})
+      r = new(connection)
+      r.request_options = request_options
+      r.send_request(request_method, resource_path, body)
     end
 
     # @!attribute [rw] params
@@ -56,6 +75,8 @@ module TogglRb
     # @!attribute [rw] resource_path
     #   @return [String] the resource_path
     attr_accessor(:params, :request_method, :resource_path)
+
+    attr_writer(:request_options)
 
     # @param connection [TogglRb::Connection] API connection for making the request
     def initialize(connection)
@@ -87,6 +108,20 @@ module TogglRb
       end
     end
     # rubocop:enable Metrics/MethodLength
+
+    def delete?
+      request_method == :delete
+    end
+
+    # rubocop:disable Naming/AccessorMethodName
+    def get_all?
+      request_options.fetch(:get_all, false)
+    end
+    # rubocop:enable Naming/AccessorMethodName
+
+    def request_options
+      @request_options || {}
+    end
 
     private
 
