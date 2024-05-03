@@ -12,10 +12,6 @@ module TogglRb
       def patch: (string_or_int workspace_id, Array[Integer] project_ids, TogglRb::JSONPatch operation) -> untyped
 
       def get: (string_or_int workspace_id, string_or_int project_id) -> untyped
-
-      def handle_error: (Response response) -> untyped
-
-      def handle_response: (Response response) -> untyped
     end
   end
 end

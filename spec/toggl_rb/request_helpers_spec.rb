@@ -9,7 +9,7 @@ module TogglRb
     end
     let(:connection) { instance_double(TogglRb::Connection) }
     let(:request) { instance_double(Faraday::Request) }
-    let(:response) { instance_double(Faraday::Response, body: '{"success": true}', status: 200) }
+    let(:response) { instance_double(Faraday::Response, body: '{"success": true}', status: 200, success?: true) }
     let(:api) { dummy_class.new }
 
     context "when the API endpoint does not implement #connection" do
@@ -28,10 +28,10 @@ module TogglRb
       end
 
       context "when sending a GET request" do
-        it "delegates to Connection and returns a TogglRb::Response" do
+        it "delegates to Connection and returns json body" do
           allow(connection).to receive(:get).with("/test").and_return(response)
           result = api.send_request(:get, "/test")
-          expect(result).to be_an_instance_of(TogglRb::Response)
+          expect(result).to eq({ "success" => true })
         end
       end
 
@@ -40,7 +40,7 @@ module TogglRb
           json_body = { data: "value" }.to_json
           allow(connection).to receive(:send).with(:post, "/test", json_body).and_return(response)
           result = api.send_request(:post, "/test", { data: "value" })
-          expect(result).to be_an_instance_of(TogglRb::Response)
+          expect(result).to eq({ "success" => true })
         end
       end
     end

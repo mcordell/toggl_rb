@@ -37,8 +37,7 @@ module TogglRb
         params_object = build_params(params)
         params_object.validate_required!
         resource_path = format(request_path, workspace_id: workspace_id)
-        response = send_request(request_method, resource_path, params_object)
-        response.body_json
+        send_request(request_method, resource_path, params_object)
       end
     end
   end
