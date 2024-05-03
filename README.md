@@ -39,76 +39,75 @@ projects_endpoint = TogglRb::Core::Projects.new(core_connection)
 
 Currently TogglRb only supports a select subset of endpoints:
 
-| Group        | Endpoint                                                                                                                           | Status |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------- | :----: |
-| Me           | [GET Me](https://engineering.toggl.com/docs/api/me/index.html#get-me)                                                              |   ✔️   |
-| Me           | [PUT Me](https://engineering.toggl.com/docs/api/me/index.html#put-me)                                                              |   ✔️   |
-| Me           | [GET Clients](https://engineering.toggl.com/docs/api/me/index.html#get-clients)                                                    |   🔲   |
-| Me           | [GET Features](https://engineering.toggl.com/docs/api/me/index.html#get-features)                                                  |   🔲   |
-| Me           | [GET User's last known location](https://engineering.toggl.com/docs/api/me/index.html#get-users-last-known-location)               |   🔲   |
-| Me           | [GET Logged](https://engineering.toggl.com/docs/api/me/index.html#get-logged)                                                      |   🔲   |
-| Me           | [GET Organizations that a user is part of][org-user-is-apart-of]                                                                   |   🔲   |
-| Me           | [GET Projects](https://engineering.toggl.com/docs/api/me/index.html#get-projects)                                                  |   🔲   |
-| Me           | [GET ProjectsPaginated](https://engineering.toggl.com/docs/api/me/index.html#get-projectspaginated)                                |   🔲   |
-| Me           | [GET Tags](https://engineering.toggl.com/docs/api/me/index.html#get-tags)                                                          |   🔲   |
-| Me           | [GET Tasks](https://engineering.toggl.com/docs/api/me/index.html#get-tasks)                                                        |   🔲   |
-| Me           | [GET TrackReminders](https://engineering.toggl.com/docs/api/me/index.html#get-trackreminders)                                      |   🔲   |
-| Me           | [GET WebTimer](https://engineering.toggl.com/docs/api/me/index.html#get-webtimer)                                                  |   🔲   |
-| Me           | [GET Workspaces](https://engineering.toggl.com/docs/api/me/index.html#get-workspaces)                                              |   🔲   |
-| Groups       | [GET List of groups in a workspace within an organization with user assignments][group-doc]                                        |   ✔️   |
-| ProjectUsers | [GET Get workspace projects users](https://engineering.toggl.com/docs/api/projects#get-get-workspace-projects-users)               |   🔲   |
-| ProjectUsers | [POST Add an user into workspace projects users][add-project-user]                                                                 |   🔲   |
-| ProjectUsers | [PATCH Patch project users from workspace][patch-project-user]                                                                     |   🔲   |
-| ProjectUsers | [PUT Update an user into workspace projects users][update-project-user]                                                            |   🔲   |
-| ProjectUsers | [DELETE Delete a project user from workspace projects users][delete-project-user]                                                  |   🔲   |
-| Projects     | [GET WorkspaceProjects](https://engineering.toggl.com/docs/api/projects#get-workspaceprojects)                                     |   🔲   |
-| Projects     | [POST WorkspaceProjects](https://engineering.toggl.com/docs/api/projects#post-workspaceprojects)                                   |   ✔️   |
-| Projects     | [PATCH WorkspaceProjects](https://engineering.toggl.com/docs/api/projects#patch-workspaceprojects)                                 |   🔲   |
-| Projects     | [GET WorkspaceProjects](https://engineering.toggl.com/docs/api/projects#get-workspaceprojects)                                     |   ✔️   |
-| Projects     | [PUT WorkspaceProject](https://engineering.toggl.com/docs/api/projects#put-workspaceproject)                                       |   🔲   |
-| Projects     | [DELETE WorkspaceProject](https://engineering.toggl.com/docs/api/projects#delete-workspaceproject)                                 |   🔲   |
-| Users        | [GET List of users who belong to the given workspace](workspace-users-doc)                                                         |   ✔️   |
-| TimeEntries  | [GET TimeEntries](https://engineering.toggl.com/docs/api/time_entries#get-timeentries)                                             |   ✔️   |
-| TimeEntries  | [GET Get current time entry](https://engineering.toggl.com/docs/api/time_entries#get-get-current-time-entry)                       |   ✔️   |
-| TimeEntries  | [GET Get a time entry by ID](https://engineering.toggl.com/docs/api/time_entries#get-get-a-time-entry-by-id)                       |   ✔️   |
-| TimeEntries  | [POST TimeEntries](https://engineering.toggl.com/docs/api/time_entries#post-timeentries)                                           |   ✔️   |
-| TimeEntries  | [PATCH Bulk editing time entries](https://engineering.toggl.com/docs/api/time_entries#patch-bulk-editing-time-entries)             |   ✔️   |
-| TimeEntries  | [PUT TimeEntries](https://engineering.toggl.com/docs/api/time_entries#put-timeentries)                                             |   ✔️   |
-| TimeEntries  | [DELETE TimeEntries](https://engineering.toggl.com/docs/api/time_entries#delete-timeentries)                                       |   ✔️   |
-| TimeEntries  | [PATCH Stop TimeEntry](https://engineering.toggl.com/docs/api/time_entries#patch-stop-timeentry)                                   |   ✔️   |
-| Workspaces   | [POST Create a new workspace](https://engineering.toggl.com/docs/api/workspaces#post-create-a-new-workspace)                       |   🔲   |
-| Workspaces   | [GET List of users who belong to the given workspace][list-users]                                                                  |   🔲   |
-| Workspaces   | [PATCH Changes the users in a workspace](https://engineering.toggl.com/docs/api/workspaces#patch-changes-the-users-in-a-workspace) |   🔲   |
-| Workspaces   | [POST Workspaces](https://engineering.toggl.com/docs/api/workspaces#post-workspaces)                                               |   🔲   |
-| Workspaces   | [GET Get single workspace](https://engineering.toggl.com/docs/api/workspaces#get-get-single-workspace)                             |   ✔️   |
-| Workspaces   | [PUT Update workspace](https://engineering.toggl.com/docs/api/workspaces#put-update-workspace)                                     |   🔲   |
-| Workspaces   | [POST Alerts](https://engineering.toggl.com/docs/api/workspaces#post-alerts)                                                       |   🔲   |
-| Workspaces   | [DELETE Alerts](https://engineering.toggl.com/docs/api/workspaces#delete-alerts)                                                   |   🔲   |
-| Workspaces   | [GET Workspace statistics](https://engineering.toggl.com/docs/api/workspaces#get-workspace-statistics)                             |   🔲   |
-| Workspaces   | [GET Get workspace time entry constraints][time-constraints]                                                                       |   🔲   |
-| Workspaces   | [GET TrackReminders](https://engineering.toggl.com/docs/api/workspaces#get-trackreminders)                                         |   🔲   |
-| Workspaces   | [POST TrackReminders](https://engineering.toggl.com/docs/api/workspaces#post-trackreminders)                                       |   🔲   |
-| Workspaces   | [PUT TrackReminder](https://engineering.toggl.com/docs/api/workspaces#put-trackreminder)                                           |   🔲   |
-| Workspaces   | [DELETE TrackReminder](https://engineering.toggl.com/docs/api/workspaces#delete-trackreminder)                                     |   🔲   |
-| Workspaces   | [GET Get workspace users](https://engineering.toggl.com/docs/api/workspaces#get-get-workspace-users)                               |   🔲   |
-| Workspaces   | [PUT Update workspace user](https://engineering.toggl.com/docs/api/workspaces#put-update-workspace-user)                           |   🔲   |
-| Workspaces   | [POST Change a lost password](https://engineering.toggl.com/docs/api/workspaces#post-change-a-lost-password)                       |   🔲   |
-| Workspaces   | [PUT Update workspace-user](https://engineering.toggl.com/docs/api/workspaces#put-update-workspace-user-1)                         |   🔲   |
-| Workspaces   | [DELETE Delete workspace user](https://engineering.toggl.com/docs/api/workspaces#delete-delete-workspace-user)                     |   🔲   |
+| Group        | Endpoint                                                                                                                | Status |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------- | :----: |
+| Me           | [GET Me](https://engineering.toggl.com/docs/api/me/index.html#get-me)                                                   |   ✔️   |
+| Me           | [PUT Me](https://engineering.toggl.com/docs/api/me/index.html#put-me)                                                   |   ✔️   |
+| Me           | [GET Clients](https://engineering.toggl.com/docs/api/me/index.html#get-clients)                                         |   🔲   |
+| Me           | [GET Features](https://engineering.toggl.com/docs/api/me/index.html#get-features)                                       |   🔲   |
+| Me           | [GET User's last known location](https://engineering.toggl.com/docs/api/me/index.html#get-users-last-known-location)    |   🔲   |
+| Me           | [GET Logged](https://engineering.toggl.com/docs/api/me/index.html#get-logged)                                           |   🔲   |
+| Me           | [GET Organizations that a user is part of][org-user-is-apart-of]                                                        |   🔲   |
+| Me           | [GET Projects](https://engineering.toggl.com/docs/api/me/index.html#get-projects)                                       |   🔲   |
+| Me           | [GET ProjectsPaginated](https://engineering.toggl.com/docs/api/me/index.html#get-projectspaginated)                     |   🔲   |
+| Me           | [GET Tags](https://engineering.toggl.com/docs/api/me/index.html#get-tags)                                               |   🔲   |
+| Me           | [GET Tasks](https://engineering.toggl.com/docs/api/me/index.html#get-tasks)                                             |   🔲   |
+| Me           | [GET TrackReminders](https://engineering.toggl.com/docs/api/me/index.html#get-trackreminders)                           |   🔲   |
+| Me           | [GET WebTimer](https://engineering.toggl.com/docs/api/me/index.html#get-webtimer)                                       |   🔲   |
+| Me           | [GET Workspaces](https://engineering.toggl.com/docs/api/me/index.html#get-workspaces)                                   |   🔲   |
+| Groups       | [GET List of groups in a workspace within an organization with user assignments][group-doc]                             |   ✔️   |
+| ProjectUsers | [GET Get workspace projects users][get-workspace-project-users]                                                         |   🔲   |
+| ProjectUsers | [POST Add an user into workspace projects users][add-project-user]                                                      |   🔲   |
+| ProjectUsers | [PATCH Patch project users from workspace][patch-project-user]                                                          |   🔲   |
+| ProjectUsers | [PUT Update an user into workspace projects users][update-project-user]                                                 |   🔲   |
+| ProjectUsers | [DELETE Delete a project user from workspace projects users][delete-project-user]                                       |   🔲   |
+| Projects     | [GET WorkspaceProjects](https://engineering.toggl.com/docs/api/projects/index.html#get-workspaceprojects)               |   🔲   |
+| Projects     | [PATCH WorkspaceProjects](https://engineering.toggl.com/docs/api/projects/index.html#patch-workspaceprojects)           |   ✔️   |
+| Projects     | [POST WorkspaceProjects](https://engineering.toggl.com/docs/api/projects/index.html#post-workspaceprojects)             |   ✔️   |
+| Projects     | [GET WorkspaceProject](https://engineering.toggl.com/docs/api/projects/index.html#get-workspaceproject)                 |   ✔️   |
+| Projects     | [PUT WorkspaceProject](https://engineering.toggl.com/docs/api/projects/index.html#put-workspaceproject)                 |   ✔️   |
+| Projects     | [DELETE WorkspaceProject](https://engineering.toggl.com/docs/api/projects/index.html#delete-workspaceproject)           |   ✔️   |
+| Users        | [GET List of users who belong to the given workspace](workspace-users-doc)                                              |   ✔️   |
+| TimeEntries  | [GET TimeEntries](https://engineering.toggl.com/docs/api/time_entries/index.html#get-timeentries)                       |   ✔️   |
+| TimeEntries  | [GET Get current time entry](https://engineering.toggl.com/docs/api/time_entries/index.html#get-get-current-time-entry) |   ✔️   |
+| TimeEntries  | [GET Get a time entry by ID](https://engineering.toggl.com/docs/api/time_entries/index.html#get-get-a-time-entry-by-id) |   ✔️   |
+| TimeEntries  | [POST TimeEntries](https://engineering.toggl.com/docs/api/time_entries/index.html#post-timeentries)                     |   ✔️   |
+| TimeEntries  | [PATCH Bulk editing time entries][bulk-edit-time-entries]                                                               |   ✔️   |
+| TimeEntries  | [PUT TimeEntries](https://engineering.toggl.com/docs/api/time_entries/index.html#put-timeentries)                       |   ✔️   |
+| TimeEntries  | [DELETE TimeEntries](https://engineering.toggl.com/docs/api/time_entries/index.html#delete-timeentries)                 |   ✔️   |
+| TimeEntries  | [PATCH Stop TimeEntry](https://engineering.toggl.com/docs/api/time_entries/index.html#patch-stop-timeentry)             |   ✔️   |
+| Workspaces   | [POST Create a new workspace](https://engineering.toggl.com/docs/api/workspaces/index.html#post-create-a-new-workspace) |   🔲   |
+| Workspaces   | [GET List of users who belong to the given workspace][list-users]                                                       |   🔲   |
+| Workspaces   | [PATCH Changes the users in a workspace][change-user-in-workspace]                                                      |   🔲   |
+| Workspaces   | [POST Workspaces](https://engineering.toggl.com/docs/api/workspaces/index.html#post-workspaces)                         |   🔲   |
+| Workspaces   | [GET Get single workspace](https://engineering.toggl.com/docs/api/workspaces/index.html#get-get-single-workspace)       |   ✔️   |
+| Workspaces   | [PUT Update workspace](https://engineering.toggl.com/docs/api/workspaces/index.html#put-update-workspace)               |   🔲   |
+| Workspaces   | [POST Alerts](https://engineering.toggl.com/docs/api/workspaces/index.html#post-alerts)                                 |   🔲   |
+| Workspaces   | [DELETE Alerts](https://engineering.toggl.com/docs/api/workspaces/index.html#delete-alerts)                             |   🔲   |
+| Workspaces   | [GET Workspace statistics](https://engineering.toggl.com/docs/api/workspaces/index.html#get-workspace-statistics)       |   🔲   |
+| Workspaces   | [GET Get workspace time entry constraints][time-constraints]                                                            |   🔲   |
+| Workspaces   | [GET TrackReminders](https://engineering.toggl.com/docs/api/workspaces/index.html#get-trackreminders)                   |   🔲   |
+| Workspaces   | [POST TrackReminders](https://engineering.toggl.com/docs/api/workspaces/index.html#post-trackreminders)                 |   🔲   |
+| Workspaces   | [PUT TrackReminder](https://engineering.toggl.com/docs/api/workspaces/index.html#put-trackreminder)                     |   🔲   |
+| Workspaces   | [DELETE TrackReminder](https://engineering.toggl.com/docs/api/workspaces/index.html#delete-trackreminder)               |   🔲   |
+| Workspaces   | [GET Get workspace users](https://engineering.toggl.com/docs/api/workspaces/index.html#get-get-workspace-users)         |   🔲   |
+| Workspaces   | [PUT Update workspace user](https://engineering.toggl.com/docs/api/workspaces/index.html#put-update-workspace-user)     |   🔲   |
+| Workspaces   | [POST Change a lost password][change-a-lost-password]                                                                   |   🔲   |
+| Workspaces   | [DELETE Delete workspace user][delete-workspace-user]                                                                   |   🔲   |
 
 On The Reporting Endpoints
 
-| Group    | Endpoint                                                                                                                         | Status |
-| -------- | -------------------------------------------------------------------------------------------------------------------------------- | :----: |
-| Detailed | [POST Search time entries](https://engineering.toggl.com/docs/reports/detailed_reports#post-search-time-entries)                 |   ✔️   |
-| Detailed | [POST Export detailed report](https://engineering.toggl.com/docs/reports/detailed_reports#post-export-detailed-report)           |   🔲   |
-| Detailed | [POST Export detailed report](https://engineering.toggl.com/docs/reports/detailed_reports#post-export-detailed-report-1)         |   🔲   |
-| Detailed | [POST Load totals detailed report](https://engineering.toggl.com/docs/reports/detailed_reports#post-load-totals-detailed-report) |   🔲   |
-| Summary  | [POST List project users](https://engineering.toggl.com/docs/reports/summary_reports#post-list-project-users)                    |   🔲   |
-| Summary  | [POST Load project summary](https://engineering.toggl.com/docs/reports/summary_reports#post-load-project-summary)                |   🔲   |
-| Summary  | [POST Search time entries](https://engineering.toggl.com/docs/reports/summary_reports#post-search-time-entries)                  |   ✔️   |
-| Summary  | [POST Export summary report](https://engineering.toggl.com/docs/reports/summary_reports#post-export-summary-report)              |   🔲   |
-| Summary  | [POST Export summary report](https://engineering.toggl.com/docs/reports/summary_reports#post-export-summary-report-1)            |   🔲   |
+| Group    | Endpoint                                                                                                                                    | Status |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------- | :----: |
+| Detailed | [POST Search time entries](https://engineering.toggl.com/docs/reports/detailed_reports/index.html/post-search-time-entries)                 |   ✔️   |
+| Detailed | [POST Export detailed report](https://engineering.toggl.com/docs/reports/detailed_reports/index.html/post-export-detailed-report)           |   🔲   |
+| Detailed | [POST Export detailed report](https://engineering.toggl.com/docs/reports/detailed_reports/index.html/post-export-detailed-report-1)         |   🔲   |
+| Detailed | [POST Load totals detailed report](https://engineering.toggl.com/docs/reports/detailed_reports/index.html/post-load-totals-detailed-report) |   🔲   |
+| Summary  | [POST List project users](https://engineering.toggl.com/docs/reports/summary_reports/index.html/post-list-project-users)                    |   🔲   |
+| Summary  | [POST Load project summary](https://engineering.toggl.com/docs/reports/summary_reports/index.html/post-load-project-summary)                |   🔲   |
+| Summary  | [POST Search time entries](https://engineering.toggl.com/docs/reports/summary_reports/index.html/post-search-time-entries)                  |   ✔️   |
+| Summary  | [POST Export summary report](https://engineering.toggl.com/docs/reports/summary_reports/index.html/post-export-summary-report)              |   🔲   |
+| Summary  | [POST Export summary report](https://engineering.toggl.com/docs/reports/summary_reports/index.html/post-export-summary-report-1)            |   🔲   |
 
 ## Development
 
@@ -120,12 +119,17 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/mcordell/toggl_rb.
 
-[group-doc]: https://engineering.toggl.com/docs/api/groups#get-list-of-groups-in-a-workspace-within-an-organization-with-user-assignments
-[workspace-users-doc]: https://engineering.toggl.com/docs/api/workspaces#get-list-of-users-who-belong-to-the-given-workspace
-[list-users]: https://engineering.toggl.com/docs/api/workspaces#get-list-of-users-who-belong-to-the-given-workspace
-[time-constraints]: https://engineering.toggl.com/docs/api/workspaces#get-get-workspace-time-entry-constraints
+[group-doc]: https://engineering.toggl.com/docs/api/groups/index.html#get-list-of-groups-in-a-workspace-within-an-organization-with-user-assignments
+[workspace-users-doc]: https://engineering.toggl.com/docs/api/workspaces/index.html#get-list-of-users-who-belong-to-the-given-workspace
+[list-users]: https://engineering.toggl.com/docs/api/workspaces/index.html#get-list-of-users-who-belong-to-the-given-workspace
+[time-constraints]: https://engineering.toggl.com/docs/api/workspaces/index.html#get-get-workspace-time-entry-constraints
 [org-user-is-apart-of]: https://engineering.toggl.com/docs/api/me/index.html#get-organizations-that-a-user-is-part-of
-[delete-project-user]: https://engineering.toggl.com/docs/api/projects#delete-delete-a-project-user-from-workspace-projects-users
-[update-project-user]: https://engineering.toggl.com/docs/api/projects#put-update-an-user-into-workspace-projects-users
-[patch-project-user]: https://engineering.toggl.com/docs/api/projects#patch-patch-project-users-from-workspace
-[add-project-user]: https://engineering.toggl.com/docs/api/projects#post-add-an-user-into-workspace-projects-users
+[delete-project-user]: https://engineering.toggl.com/docs/api/projects/index.html#delete-delete-a-project-user-from-workspace-projects-users
+[update-project-user]: https://engineering.toggl.com/docs/api/projects/index.html#put-update-an-user-into-workspace-projects-users
+[patch-project-user]: https://engineering.toggl.com/docs/api/projects/index.html#patch-patch-project-users-from-workspace
+[add-project-user]: https://engineering.toggl.com/docs/api/projects/index.html#post-add-an-user-into-workspace-projects-users
+[change-user-in-workspace]: https://engineering.toggl.com/docs/api/workspaces/index.html#patch-changes-the-users-in-a-workspace
+[bulk-edit-time-entries]: https://engineering.toggl.com/docs/api/time_entries/index.html#patch-bulk-editing-time-entries
+[get-workspace-project-users]: https://engineering.toggl.com/docs/api/projects/index.html#get-workspace-projects-users
+[delete-workspace-user]: https://engineering.toggl.com/docs/api/workspaces/index.html#delete-delete-workspace-user
+[change-a-lost-password]: https://engineering.toggl.com/docs/api/workspaces/index.html#post-change-a-lost-password
