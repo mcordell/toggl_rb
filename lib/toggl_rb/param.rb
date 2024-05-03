@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module TogglRb
-  # Param represents the definition of an API parameter to be sent to the API
+  # Param holds the definition of an API parameter to be sent to the API
   class Param
     # @!attribute [r] name
     #   @return [Symbol] name of the parameter

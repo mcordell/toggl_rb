@@ -3,7 +3,7 @@
 require "faraday"
 
 module TogglRb
-  # Config class stores global configuration for the TogglRb gem
+  # Client holds connections to APIs for re-use
   class Client
     attr_reader :core_connection, :reports_connection
 
