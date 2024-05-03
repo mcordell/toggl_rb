@@ -109,21 +109,25 @@ module TogglRb
     end
     # rubocop:enable Metrics/MethodLength
 
+    # @return [Boolean] whether this is a delete request
     def delete?
       request_method == :delete
     end
 
     # rubocop:disable Naming/AccessorMethodName
+
+    # @return [Boolean] whether to get all objects for this request
     def get_all?
       request_options.fetch(:get_all, false)
     end
     # rubocop:enable Naming/AccessorMethodName
 
+    private
+
+    # @return [Hash] options for this request
     def request_options
       @request_options || {}
     end
-
-    private
 
     # @param body [Params, JSONPatch, nil, Hash] the body to setup
     # @raise [ArgumentError] when body is an unknown type
