@@ -35,6 +35,39 @@ module TogglRb
       end
     end
 
+    describe "#result_format" do
+      subject(:result_format) { instance.result_format }
+
+      it "defaults to #{described_class::BASIC_TYPES}" do
+        expect(result_format).to eq described_class::BASIC_TYPES
+      end
+
+      context "when the format is set" do
+        before { instance.result_format = :objects }
+
+        it "returns that format" do
+          expect(result_format).to eq :objects
+        end
+      end
+    end
+
+    describe "#result_format=" do
+      context "when passed a valid format" do
+        it "sets the result_format" do
+          instance.result_format = :objects
+          expect(instance.result_format).to eq :objects
+        end
+      end
+
+      context "when passed an invalid format" do
+        it "raises an ArgumentError" do
+          expect do
+            instance.result_format = :cat
+          end.to raise_error ArgumentError, "cat must be one of basic_types, response, objects"
+        end
+      end
+    end
+
     describe "#api_token?" do
       subject { instance.api_token? }
 

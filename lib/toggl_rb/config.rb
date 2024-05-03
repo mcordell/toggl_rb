@@ -3,6 +3,15 @@
 module TogglRb
   # Config class stores global configuration settings for the TogglRb gem.
   class Config
+    BASIC_TYPES = :basic_types
+
+    # Defines the available response formats.
+    RESULT_FORMATS = [
+      BASIC_TYPES,
+      :response,
+      :objects
+    ].freeze
+
     # @!attribute [rw] username
     #   @return [String, nil] the username for Toggl API access, used with password for basic auth
     # @!attribute [rw] password
@@ -41,6 +50,23 @@ module TogglRb
     # @return [Logger]
     def logger
       @logger || Logger.new($stdout)
+    end
+
+    # @return [Symbol] the way in which API responses should be returned
+    def result_format
+      @result_format || BASIC_TYPES
+    end
+
+    # @param format [:basic_types, :response, :objects] set the format to be used in all API responses
+    # @raise [ArgumentError] when the supplied format is unknown
+    # @return [void]
+    def result_format=(format)
+      unless RESULT_FORMATS.include?(format.to_sym)
+        raise ArgumentError,
+              "#{format} must be one of #{RESULT_FORMATS.join(", ")}"
+      end
+
+      @result_format = format.to_sym
     end
 
     # Alias for the debug_logging method to query debug logging status.
