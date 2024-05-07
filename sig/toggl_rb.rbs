@@ -2,6 +2,12 @@ type string_or_int = String | Integer
 
 type attributes = ::Hash[untyped,untyped]
 
+interface _FromAPIBody
+  def build_from_api_body: (Array[untyped] | Hash[untyped, untyped] | String) -> untyped
+
+  def nil?: () -> bool
+end
+
 module TogglRb
   self.@config: TogglRb::Config
 

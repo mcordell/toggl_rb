@@ -7,7 +7,10 @@ module TogglRb
 
     def set_attributes: (::Hash[untyped, untyped] attrs) -> TogglRb::Workspace
 
+    def self.build_from_api_body: (Array[untyped] | Hash[untyped, untyped] | String) -> untyped
+
     attr_reader id: Integer
+
     API_ATTRIBUTES: ::Array[:admin | :api_token | :at | :business_ws |
     :csv_upload | :default_currency | :default_hourly_rate |
     :hide_start_end_times | :ical_enabled | :ical_url | :last_modified |

@@ -45,6 +45,21 @@ module TogglRb
       request
     end
 
+    # @return [Boolean] whether this response should return as response objects
+    def return_responses?
+      request.result_format == :response
+    end
+
+    # @return [Boolean] whether this response supports returning ruby objects
+    def can_return_ruby_objects?
+      request.result_format == :objects && !request.result_class.nil?
+    end
+
+    # @return [Object]
+    def objects
+      # TODO
+    end
+
     # Delegates the status method call directly to the Faraday response object.
     # @!method status
     # @return [Integer] the HTTP status code of the response

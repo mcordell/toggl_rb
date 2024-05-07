@@ -13,6 +13,14 @@ module TogglRb
 
     API_TOKEN_PASSWORD: "api_token"
 
+    BASIC_TYPES: :basic_types
+
+    RESULT_FORMATS: [
+      :basic_types,
+      :response,
+      :objects
+    ]
+
     def basic_auth?: () -> bool
 
     def api_token?: () -> bool
@@ -20,5 +28,7 @@ module TogglRb
     def debug_logging: () -> bool
 
     def debug_logging?: () -> bool
+
+    def result_format: () -> Symbol
   end
 end

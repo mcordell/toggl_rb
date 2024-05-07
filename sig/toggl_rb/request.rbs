@@ -2,13 +2,19 @@ module TogglRb
   module RequestHelpers
     def send_request: (Symbol request_method, String resource_path, ?untyped? body, ?Hash[untyped, untyped] request_options) -> untyped
 
+    private 
+
     def connection: () -> TogglRb::Connection
 
-    def request_all: (TogglRb::Response response) -> untyped
+    def request_all: (TogglRb::Response response) -> Array[Response]
 
     def handle_error: (Response response) -> untyped
 
     def handle_response: (Response response) -> untyped
+
+    def result: ((Response | Array[Response]) response) -> untyped
+
+    def response_array: (Array[Response] array_response) -> untyped
   end
 
   class Request
@@ -26,7 +32,13 @@ module TogglRb
 
     def get_all?: () -> bool
 
-    def request_options: () -> Hash[Symbol, bool]
+    def result_format: () -> Symbol
+
+    def request_options: () -> Hash[Symbol, untyped]
+
+    def result_class: () -> _FromAPIBody?
+
+    def result_option: () -> Symbol?
 
     attr_accessor params: (TogglRb::Params | TogglRb::JSONPatch)
 
@@ -34,7 +46,7 @@ module TogglRb
 
     attr_accessor resource_path: String
 
-    attr_writer request_options: Hash[Symbol, bool]
+    attr_writer request_options: Hash[Symbol, untyped]
 
     private
 

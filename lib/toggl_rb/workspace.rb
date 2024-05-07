@@ -19,6 +19,8 @@ module TogglRb
 
     attr_accessor(*API_ATTRIBUTES)
 
+    def self.build_from_api_body(json_body); end
+
     # @param id [Integer] the workspace's ID
     def initialize(id)
       @id = id

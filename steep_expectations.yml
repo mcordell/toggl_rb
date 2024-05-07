@@ -11,19 +11,6 @@
     severity: WARNING
     message: 'Cannot find the declaration of constant: `Faraday`'
     code: Ruby::UnknownConstant
-- file: lib/toggl_rb/request.rb
-  diagnostics:
-  - range:
-      start:
-        line: 28
-        character: 30
-      end:
-        line: 28
-        character: 39
-    severity: ERROR
-    message: Type `(::Hash[untyped, untyped] | ::Array[untyped])` does not have method
-      `+`
-    code: Ruby::NoMethod
 - file: lib/toggl_rb/response.rb
   diagnostics:
   - range:

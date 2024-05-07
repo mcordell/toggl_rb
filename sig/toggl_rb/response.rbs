@@ -21,5 +21,11 @@ module TogglRb
     attr_accessor request: TogglRb::Request
 
     def next_page_request: () -> TogglRb::Request
+
+    def return_responses?: () -> bool
+
+    def can_return_ruby_objects?: () -> bool
+
+    def objects: () -> untyped
   end
 end

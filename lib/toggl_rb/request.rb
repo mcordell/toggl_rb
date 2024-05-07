@@ -20,12 +20,13 @@ module TogglRb
     private
 
     # @param response [TogglRb::Response]
+    # @return [Array<TogglRb::Response>]
     def request_all(response)
-      all_items = response.body_json
+      all_items = [response]
 
       while response.more?
         response = response.next_page_request.execute
-        all_items += response.body_json
+        all_items.push(response)
       end
 
       all_items
@@ -38,11 +39,8 @@ module TogglRb
 
     def handle_response(response)
       if response.success?
-        return true if response.request.delete?
-
-        return response.body_json unless response.request.get_all?
-
-        return request_all(response)
+        response = request_all(response) if response.request.get_all?
+        return result(response)
       end
 
       handle_error(response)
@@ -50,6 +48,22 @@ module TogglRb
 
     def handle_error(response)
       response.body_json
+    end
+
+    def result(response)
+      return response_array(response) if response.is_a?(Array)
+      return true if response.request.delete?
+      return response if response.return_responses?
+      return response.objects if response.can_return_ruby_objects?
+
+      response.body_json
+    end
+
+    def response_array(array_response)
+      array_response.reduce([]) do |out, r|
+        response = result(r)
+        response.is_a?(Array) ? out.concat(response) : out.push(response)
+      end
     end
   end
 
@@ -83,16 +97,17 @@ module TogglRb
       @connection = connection
     end
 
-    # @return [TogglRb::Response] the response for this request
+    # Executes this request with set variables rather
+    # @return [Object] returns the result of this request based on result_format
     def execute
       send_request(request_method, resource_path, params)
     end
+    # rubocop:disable Metrics/MethodLength
 
     # @param req_method [Symbol] HTTP request method, :get, :post, etc
     # @param path [String] endpoint path on the API
     # @param body [Mixed] the body or request params
-    # @return [TogglRb::Response] the response for this request
-    # rubocop:disable Metrics/MethodLength
+    # @return [Object] mixed return value based on result format
     def send_request(req_method, path, body = nil)
       self.request_method ||= req_method
       self.resource_path ||= path
@@ -122,7 +137,24 @@ module TogglRb
     end
     # rubocop:enable Naming/AccessorMethodName
 
+    # @return [:basic_types, :response, :objects] the format that this request's response should be returned in
+    def result_format
+      result_option || TogglRb.config.result_format
+    end
+
+    # @return [Class, nil]
+    def result_class
+      request_options[:result_class]
+    end
+
     private
+
+    def result_option
+      opt = request_options[:result_format]
+      return nil unless Config::RESULT_FORMATS.include?(opt)
+
+      opt
+    end
 
     # @return [Hash] options for this request
     def request_options
