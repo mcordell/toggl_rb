@@ -65,6 +65,6 @@ module TogglRb
     # @return [Integer] the HTTP status code of the response
     # @!method success?
     # @return [Boolean] whether the request successful according to Farday response success
-    def_delegators :@faraday_response, :status, :success?
+    def_delegators :@faraday_response, :status, :success?, :headers
   end
 end
